@@ -1,0 +1,87 @@
+name: Export and Unpack Solution - HawaiianElectric
+
+on:
+  workflow_dispatch:
+    inputs:
+      solution_name:
+        description: 'Solution name to export'
+        required: true
+        default: 'HawaiianElectric'
+        type: string
+
+env:
+  SOLUTION_NAME: ${{ github.event.inputs.solution_name || 'HawaiianElectric' }}
+  SOLUTION_FOLDER: src/HawaiianElectric
+  SOLUTION_ZIP: HawaiianElectric.zip
+
+permissions:
+  contents: write
+
+jobs:
+  export-and-unpack:
+    runs-on: windows-latest
+    name: Export solution from PP-DEMO and unpack to source
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install Power Platform Tools
+        uses: microsoft/powerplatform-actions/actions-install@v1
+
+      - name: Export solution from PP-DEMO
+        uses: microsoft/powerplatform-actions/export-solution@v1
+        with:
+          environment-url: ${{ secrets.PP_DEMO_URL }}
+          app-id: ${{ secrets.PP_DEMO_CLIENT_ID }}
+          client-secret: ${{ secrets.PP_DEMO_CLIENT_SECRET }}
+          tenant-id: ${{ secrets.PP_DEMO_TENANT_ID }}
+          solution-name: ${{ env.SOLUTION_NAME }}
+          solution-output-file: ${{ env.SOLUTION_ZIP }}
+          managed: false
+
+      - name: Verify exported solution zip
+        shell: pwsh
+        run: |
+          if (Test-Path -Path "${{ env.SOLUTION_ZIP }}") {
+            $size = (Get-Item "${{ env.SOLUTION_ZIP }}").Length / 1KB
+            Write-Host "✅ Solution exported: ${{ env.SOLUTION_ZIP }} ($([math]::Round($size, 1)) KB)"
+          } else {
+            Write-Host "❌ Export failed - zip not found"
+            exit 1
+          }
+
+      - name: Unpack solution to src folder
+        uses: microsoft/powerplatform-actions/unpack-solution@v1
+        with:
+          solution-file: ${{ env.SOLUTION_ZIP }}
+          solution-folder: ${{ env.SOLUTION_FOLDER }}
+          solution-type: Unmanaged
+          overwrite-files: true
+
+      - name: Remove solution zip
+        shell: pwsh
+        run: |
+          if (Test-Path "${{ env.SOLUTION_ZIP }}") {
+            Remove-Item "${{ env.SOLUTION_ZIP }}" -Force
+            Write-Host "🗑️ Cleaned up zip"
+          }
+
+      - name: Commit and push unpacked solution
+        shell: pwsh
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add "${{ env.SOLUTION_FOLDER }}"
+          $changes = git status --porcelain
+          if ($changes) {
+            $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm UTC"
+            git commit -m "chore: export HawaiianElectric [$timestamp] [skip ci]"
+            git push origin HEAD:${{ github.ref_name }}
+            Write-Host "✅ Pushed to ${{ github.ref_name }}"
+          } else {
+            Write-Host "ℹ️ No changes - solution already up to date"
+          }
