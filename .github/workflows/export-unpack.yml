@@ -1,4 +1,4 @@
-name: Export and Unpack Solution - HawaiianElectric
+name: Export and Unpack Solution - EventRegistration
 
 on:
   workflow_dispatch:
@@ -6,13 +6,13 @@ on:
       solution_name:
         description: 'Solution name to export'
         required: true
-        default: 'HawaiianElectric'
+        default: 'EventRegistration'
         type: string
 
 env:
-  SOLUTION_NAME: ${{ github.event.inputs.solution_name || 'HawaiianElectric' }}
-  SOLUTION_FOLDER: src/HawaiianElectric
-  SOLUTION_ZIP: HawaiianElectric.zip
+  SOLUTION_NAME: ${{ github.event.inputs.solution_name || 'EventRegistration' }}
+  SOLUTION_FOLDER: src/EventRegistration
+  SOLUTION_ZIP: EventRegistration.zip
 
 permissions:
   contents: write
@@ -79,7 +79,7 @@ jobs:
           $changes = git status --porcelain
           if ($changes) {
             $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm UTC"
-            git commit -m "chore: export HawaiianElectric [$timestamp] [skip ci]"
+            git commit -m "chore: export EventRegistration [$timestamp] [skip ci]"
             git push origin HEAD:${{ github.ref_name }}
             Write-Host "✅ Pushed to ${{ github.ref_name }}"
           } else {
