@@ -6,13 +6,13 @@ on:
       solution_name:
         description: 'Solution name to deploy'
         required: true
-        default: 'HawaiianElectric'
+        default: 'EventRegistration'
         type: string
 
 env:
-  SOLUTION_NAME: ${{ github.event.inputs.solution_name || 'HawaiianElectric' }}
-  SOLUTION_FOLDER: src/HawaiianElectric
-  SOLUTION_ZIP: HawaiianElectric_unmanaged.zip
+  SOLUTION_NAME: ${{ github.event.inputs.solution_name || 'EventRegistration' }}
+  SOLUTION_FOLDER: src/EventRegistration
+  SOLUTION_ZIP: EventRegistration_unmanaged.zip
 
 permissions:
   contents: read
@@ -43,9 +43,9 @@ jobs:
         run: |
           if (Test-Path -Path "${{ env.SOLUTION_ZIP }}") {
             $size = (Get-Item "${{ env.SOLUTION_ZIP }}").Length / 1KB
-            Write-Host "✅ Solution packed: ${{ env.SOLUTION_ZIP }} ($([math]::Round($size, 1)) KB)"
+            Write-Host "Solution packed: ${{ env.SOLUTION_ZIP }} ($([math]::Round($size, 1)) KB)"
           } else {
-            Write-Host "❌ Pack failed - zip not found"
+            Write-Host "Pack failed - zip not found"
             exit 1
           }
 
@@ -67,13 +67,13 @@ jobs:
         run: |
           if (Test-Path "${{ env.SOLUTION_ZIP }}") {
             Remove-Item "${{ env.SOLUTION_ZIP }}" -Force
-            Write-Host "🗑️ Cleaned up zip"
+            Write-Host "Cleaned up zip"
           }
 
       - name: Confirm deployment
         shell: pwsh
         run: |
-          Write-Host "✅ HawaiianElectric deployed successfully to HECO_UAT"
-          Write-Host "🌐 Environment: ${{ secrets.HECO_UAT_URL }}"
-          Write-Host "📦 Solution: ${{ env.SOLUTION_NAME }}"
-          Write-Host "🕐 Time: $(Get-Date -Format 'yyyy-MM-dd HH:mm UTC')"
+          Write-Host "EventRegistration deployed successfully to HECO_UAT"
+          Write-Host "Environment: ${{ secrets.HECO_UAT_URL }}"
+          Write-Host "Solution: ${{ env.SOLUTION_NAME }}"
+          Write-Host "Time: $(Get-Date -Format 'yyyy-MM-dd HH:mm UTC')"
