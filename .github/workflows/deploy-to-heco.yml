@@ -49,13 +49,6 @@ jobs:
             exit 1
           }
 
-      - name: Wait for any pending Dataverse jobs to clear
-        shell: pwsh
-        run: |
-          Write-Host "Waiting 60 seconds for Dataverse background jobs to clear..."
-          Start-Sleep -Seconds 60
-          Write-Host "Wait complete - proceeding with import"
-
       - name: Import solution to HECO_UAT
         uses: microsoft/powerplatform-actions/import-solution@v1
         with:
@@ -70,14 +63,6 @@ jobs:
           run-asynchronously: true
           max-async-wait-time: 30
           deployment-settings-file: config/uat-deployment-settings.json
-
-      - name: Publish customizations
-        uses: microsoft/powerplatform-actions/publish-solution@v1
-        with:
-          environment-url: ${{ secrets.HECO_UAT_URL }}
-          app-id: ${{ secrets.HECO_CLIENT_ID }}
-          client-secret: ${{ secrets.HECO_CLIENT_SECRET }}
-          tenant-id: ${{ secrets.HECO_TENANT_ID }}
 
       - name: Remove packed zip
         shell: pwsh
