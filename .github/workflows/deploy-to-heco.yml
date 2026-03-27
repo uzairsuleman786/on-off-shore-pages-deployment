@@ -60,6 +60,8 @@ jobs:
           force-overwrite: true
           publish-changes: true
           skip-dependency-check: false
+          async: true
+          max-async-wait-time: 30
           deployment-settings-file: config/uat-deployment-settings.json
 
       - name: Remove packed zip
