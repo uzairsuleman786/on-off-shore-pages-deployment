@@ -1,0 +1,11 @@
+<powerpagecomponent powerpagecomponentid="718a1f67-055a-47f4-80df-3873f3886d91">
+  <content>{"adx_websiteaccess_webrole":["6db4d624-4371-4f7e-90d8-f3100f445e77"],"managecontentsnippets":true,"managesitemarkers":true,"manageweblinksets":true,"previewunpublishedentities":true}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Administrative permissions for Blank Template</name>
+  <powerpagecomponenttype>12</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>193c85f4-6bd0-4d90-b34d-b93da1ca5eef</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

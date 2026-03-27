@@ -1,0 +1,13 @@
+<powerpagecomponent powerpagecomponentid="e1661c15-f0db-f011-8543-7ced8d6f92ba">
+  <content>{
+  "source": "{% fetchxml events %}\r\n&lt;fetch version=\"1.0\"&gt;\r\n  &lt;entity name=\"er_event\"&gt;\r\n    &lt;attribute name=\"er_eventid\" /&gt;\r\n    &lt;attribute name=\"er_eventname\" /&gt;\r\n    &lt;filter&gt;\r\n      &lt;condition attribute=\"statecode\" operator=\"eq\" value=\"0\" /&gt;\r\n    &lt;/filter&gt;\r\n    &lt;order attribute=\"er_eventname\" /&gt;\r\n  &lt;/entity&gt;\r\n&lt;/fetch&gt;\r\n{% endfetchxml %}\r\n\r\n&lt;section class=\"py-5\"&gt;\r\n  &lt;div class=\"container\"&gt;\r\n    &lt;p&gt;&lt;strong&gt;Events found:&lt;/strong&gt; {{ events.result.entities.size }}&lt;/p&gt;\r\n\r\n    &lt;select id=\"eventLookup\" class=\"form-select\"&gt;\r\n      &lt;option value=\"\"&gt;-- Choose Event --&lt;/option&gt;\r\n      {% for e in events.result.entities %}\r\n        &lt;option value=\"{{ e.er_eventid }}\"&gt;{{ e.er_eventname }}&lt;/option&gt;\r\n      {% endfor %}\r\n    &lt;/select&gt;\r\n  &lt;/div&gt;\r\n&lt;/section&gt;\r\n\r\n{% include \"WebAPI Wrapper\" %}"
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Event Registration Template</name>
+  <powerpagecomponenttype>8</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>193c85f4-6bd0-4d90-b34d-b93da1ca5eef</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

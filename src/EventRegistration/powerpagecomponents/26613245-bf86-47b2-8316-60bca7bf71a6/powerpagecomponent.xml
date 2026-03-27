@@ -1,0 +1,12 @@
+<powerpagecomponent powerpagecomponentid="26613245-bf86-47b2-8316-60bca7bf71a6">
+  <content>{"enablerating":false,"enabletracking":false,"excludefromsearch":true,"hiddenfromsitemap":true,"isroot":true,"pagetemplateid":"fc18a914-844b-4d5a-8ab2-020e60610c58","parentpageid":"cb403430-2fb9-4936-a45c-db75f161d8ba","partialurl":"access-denied","publishingstateid":"706c8d44-f8a7-4d37-803a-01690654b0df","sharedpageconfiguration":false}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Access Denied</name>
+  <powerpagecomponenttype>2</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>193c85f4-6bd0-4d90-b34d-b93da1ca5eef</powerpagesiteid>
+  </powerpagesiteid>
+  <searchcontent>Access Denied</searchcontent>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

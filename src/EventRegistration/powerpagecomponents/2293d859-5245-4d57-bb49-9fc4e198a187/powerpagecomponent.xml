@@ -1,0 +1,32 @@
+<powerpagecomponent powerpagecomponentid="2293d859-5245-4d57-bb49-9fc4e198a187">
+  <content>{
+  "entityname": "Contact Read",
+  "entitylogicalname": "contact",
+  "scope": 756150000,
+  "append": true,
+  "appendto": true,
+  "delete": false,
+  "read": true,
+  "create": false,
+  "write": false,
+  "parentrelationship": null,
+  "parententitypermission": null,
+  "contactrelationship": null,
+  "accountrelationship": null,
+  "childTablePermissions": [],
+  "adx_entitypermission_webrole": [
+    "9b9f3f13-a67e-40be-83ab-07d48459fcaf",
+    "5dd28c7a-ecf2-4752-a374-2db324e4279f",
+    "6db4d624-4371-4f7e-90d8-f3100f445e77"
+  ],
+  "permissionfetchxml": null
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Contact Read</name>
+  <powerpagecomponenttype>18</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>193c85f4-6bd0-4d90-b34d-b93da1ca5eef</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

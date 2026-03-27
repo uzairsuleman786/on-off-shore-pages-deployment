@@ -1,0 +1,19 @@
+<powerpagecomponent powerpagecomponentid="80657e12-80f7-0ec6-0943-2068014277be">
+  <content>{
+  "webpageid": "4ab25953-db12-2477-c962-3ea1cf075a55",
+  "right": 2,
+  "scope": 1,
+  "adx_webpageaccesscontrolrule_webrole": [
+    "5dd28c7a-ecf2-4752-a374-2db324e4279f",
+    "6db4d624-4371-4f7e-90d8-f3100f445e77"
+  ]
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Restrict Read on View Registration Detail</name>
+  <powerpagecomponenttype>10</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>193c85f4-6bd0-4d90-b34d-b93da1ca5eef</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

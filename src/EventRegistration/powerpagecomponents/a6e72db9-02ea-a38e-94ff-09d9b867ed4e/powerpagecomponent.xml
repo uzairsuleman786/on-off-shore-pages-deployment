@@ -1,0 +1,42 @@
+<powerpagecomponent powerpagecomponentid="a6e72db9-02ea-a38e-94ff-09d9b867ed4e">
+  <content>{
+  "filecontent": null,
+  "displayorder": 9,
+  "customcss": "",
+  "customjavascript": "\r\n// Example only — adjust to your needs\r\ndocument.addEventListener('DOMContentLoaded', function () {\r\n  var form = document.getElementById('signupForm');\r\n  if (!form) return;\r\n\r\n  form.addEventListener('submit', function (e) {\r\n    e.preventDefault();\r\n    // TODO: add your submission logic here\r\n    alert('Signup submitted (demo). Replace with real handler.');\r\n  });\r\n});\r\n",
+  "pagetemplateid": "fc18a914-844b-4d5a-8ab2-020e60610c58",
+  "parentpageid": "cb403430-2fb9-4936-a45c-db75f161d8ba",
+  "partialurl": "Signup-Page",
+  "isroot": false,
+  "rootwebpageid": "e1864372-8ea6-2c1b-5749-78a73cb05806",
+  "title": "Signup Page",
+  "summary": "&lt;p&gt;This is a sample landing page designed to be a starting point for your website&lt;/p&gt;",
+  "copy": "&lt;div class=\"signup-container\"&gt;\n  &lt;h2&gt;Create Account&lt;/h2&gt;\n  &lt;form id=\"signupForm\"&gt;&lt;label for=\"name\"&gt;Full Name&lt;/label&gt;&lt;input type=\"text\" id=\"name\" name=\"name\" required=\"\" /&gt;&lt;label for=\"email\"&gt;Email&lt;/label&gt;&lt;input type=\"email\" id=\"email\" name=\"email\" required=\"\" /&gt;&lt;label for=\"phone\"&gt;Phone&lt;/label&gt;&lt;input type=\"text\" id=\"phone\" name=\"phone\" /&gt;&lt;label for=\"hawaiianName\"&gt;Hawaiian Name&lt;/label&gt;&lt;input type=\"text\" id=\"hawaiianName\" name=\"hawaiianName\" /&gt;&lt;label for=\"password\"&gt;Password&lt;/label&gt;&lt;input type=\"password\" id=\"password\" name=\"password\" required=\"\" /&gt;&lt;button type=\"submit\"&gt;Sign Up&lt;/button&gt;&lt;/form&gt;\n  &lt;p&gt;Already have an account? /sign-inLogin&lt;/p&gt;\n&lt;/div&gt;\n&lt;div class=\"row sectionBlockLayout text-start\" style=\"display: flex; flex-wrap: wrap; margin: 0px; min-height: auto; padding: 8px;\"&gt;\n  &lt;div class=\"container\" style=\"padding: 0px; display: flex; flex-wrap: wrap;\"&gt;&lt;div class=\"col-lg-12 columnBlockLayout\" style=\"flex-grow: 1; display: flex; flex-direction: column; min-width: 250px;\"&gt;&lt;/div&gt;&lt;/div&gt;\n&lt;/div&gt;\n",
+  "publishingstateid": "706c8d44-f8a7-4d37-803a-01690654b0df",
+  "enablerating": false,
+  "enabletracking": false,
+  "excludefromsearch": false,
+  "hiddenfromsitemap": true,
+  "sharedpageconfiguration": false
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Signup Page</name>
+  <powerpagecomponenttype>2</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>193c85f4-6bd0-4d90-b34d-b93da1ca5eef</powerpagesiteid>
+  </powerpagesiteid>
+  <powerpagesitelanguageid>
+    <powerpagesitelanguageid>e44d1b13-a1ce-4442-90d4-a38a3d8d370c</powerpagesitelanguageid>
+  </powerpagesitelanguageid>
+  <searchcontent>Signup Page&lt;div class="signup-container"&gt;
+  &lt;h2&gt;Create Account&lt;/h2&gt;
+  &lt;form id="signupForm"&gt;&lt;label for="name"&gt;Full Name&lt;/label&gt;&lt;input type="text" id="name" name="name" required="" /&gt;&lt;label for="email"&gt;Email&lt;/label&gt;&lt;input type="email" id="email" name="email" required="" /&gt;&lt;label for="phone"&gt;Phone&lt;/label&gt;&lt;input type="text" id="phone" name="phone" /&gt;&lt;label for="hawaiianName"&gt;Hawaiian Name&lt;/label&gt;&lt;input type="text" id="hawaiianName" name="hawaiianName" /&gt;&lt;label for="password"&gt;Password&lt;/label&gt;&lt;input type="password" id="password" name="password" required="" /&gt;&lt;button type="submit"&gt;Sign Up&lt;/button&gt;&lt;/form&gt;
+  &lt;p&gt;Already have an account? /sign-inLogin&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="row sectionBlockLayout text-start" style="display: flex; flex-wrap: wrap; margin: 0px; min-height: auto; padding: 8px;"&gt;
+  &lt;div class="container" style="padding: 0px; display: flex; flex-wrap: wrap;"&gt;&lt;div class="col-lg-12 columnBlockLayout" style="flex-grow: 1; display: flex; flex-direction: column; min-width: 250px;"&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+Signup Page</searchcontent>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

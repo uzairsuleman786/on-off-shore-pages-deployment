@@ -1,0 +1,19 @@
+<powerpagecomponent powerpagecomponentid="fc55830b-39c1-dd2f-fa1b-65b2fb702424">
+  <content>{
+  "webpageid": "9ab11308-955a-d2ff-d513-f63f75567d7e",
+  "right": 2,
+  "scope": 1,
+  "adx_webpageaccesscontrolrule_webrole": [
+    "5dd28c7a-ecf2-4752-a374-2db324e4279f",
+    "6db4d624-4371-4f7e-90d8-f3100f445e77"
+  ]
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Restrict Read on Events</name>
+  <powerpagecomponenttype>10</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>193c85f4-6bd0-4d90-b34d-b93da1ca5eef</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

@@ -1,0 +1,29 @@
+<powerpagecomponent powerpagecomponentid="e1864372-8ea6-2c1b-5749-78a73cb05806">
+  <content>{
+  "displayorder": 9,
+  "customcss": "",
+  "customjavascript": "",
+  "pagetemplateid": "fc18a914-844b-4d5a-8ab2-020e60610c58",
+  "parentpageid": "cb403430-2fb9-4936-a45c-db75f161d8ba",
+  "partialurl": "Signup-Page",
+  "isroot": true,
+  "title": "Signup Page",
+  "summary": "&lt;p&gt;This is a sample landing page designed to be a starting point for your website&lt;/p&gt;",
+  "copy": "",
+  "publishingstateid": "706c8d44-f8a7-4d37-803a-01690654b0df",
+  "enablerating": false,
+  "enabletracking": false,
+  "excludefromsearch": false,
+  "hiddenfromsitemap": true,
+  "sharedpageconfiguration": false
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Signup Page</name>
+  <powerpagecomponenttype>2</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>193c85f4-6bd0-4d90-b34d-b93da1ca5eef</powerpagesiteid>
+  </powerpagesiteid>
+  <searchcontent>Signup PageSignup Page</searchcontent>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

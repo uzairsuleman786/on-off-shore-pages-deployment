@@ -1,0 +1,18 @@
+<powerpagecomponent powerpagecomponentid="28ce9a6e-00e7-f011-8543-7ced8d6f92ba">
+  <content>{
+  "value": "&lt;form id=\"signup-form\" class=\"auth-form\"&gt;\r\n  &lt;input type=\"text\" name=\"full_name\" placeholder=\"Full Name\" required&gt;\r\n  &lt;input type=\"email\" name=\"email\" placeholder=\"Email\" required&gt;\r\n  &lt;input type=\"password\" name=\"password\" placeholder=\"Password\" required&gt;\r\n\r\n  &lt;button type=\"submit\"&gt;Create Account&lt;/button&gt;\r\n\r\n  &lt;p&gt;\r\n    Already have an account?\r\n    &lt;a href=\"/login\"&gt;Login&lt;/a&gt;\r\n  &lt;/p&gt;\r\n&lt;/form&gt;",
+  "display_name": "Signup Form",
+  "type": 756150001
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Signup Form</name>
+  <powerpagecomponenttype>7</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>193c85f4-6bd0-4d90-b34d-b93da1ca5eef</powerpagesiteid>
+  </powerpagesiteid>
+  <powerpagesitelanguageid>
+    <powerpagesitelanguageid>e44d1b13-a1ce-4442-90d4-a38a3d8d370c</powerpagesitelanguageid>
+  </powerpagesitelanguageid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

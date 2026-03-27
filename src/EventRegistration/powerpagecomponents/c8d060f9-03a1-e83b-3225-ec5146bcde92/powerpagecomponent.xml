@@ -1,0 +1,19 @@
+<powerpagecomponent powerpagecomponentid="c8d060f9-03a1-e83b-3225-ec5146bcde92">
+  <content>{
+  "webpageid": "094fae8b-7c09-4e2b-7037-1d7d8873ebe8",
+  "right": 2,
+  "scope": 1,
+  "adx_webpageaccesscontrolrule_webrole": [
+    "5dd28c7a-ecf2-4752-a374-2db324e4279f",
+    "6db4d624-4371-4f7e-90d8-f3100f445e77"
+  ]
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Restrict Read on Edit Registration</name>
+  <powerpagecomponenttype>10</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>193c85f4-6bd0-4d90-b34d-b93da1ca5eef</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

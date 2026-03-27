@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{6f0e3b19-b5bc-4a0b-8ff6-f6641ef43685}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab verticallayout="true" id="{49063e94-3ea9-4332-be14-08241d35c9f6}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{e98e4b68-34fd-42d0-9c0e-298a9a907a23}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{16c8caf6-8f58-4c28-8ca4-659d177d72d8}">
+                        <labels>
+                          <label description="Customer Request" languagecode="1033" />
+                        </labels>
+                        <control id="er_customerrequest1" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="er_customerrequest1" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{02360419-2b64-46f2-bde3-1a0770818991}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{aec1b440-34b4-467e-a5eb-8f3f3a8d7a1f}">
+                        <labels>
+                          <label description="Customer" languagecode="1033" />
+                        </labels>
+                        <control id="er_customer" classid="{270bd3db-d9af-4782-9025-509e298dec0a}" datafieldname="er_customer" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{ae7d7f91-98d5-43fe-9813-afaafc90d6aa}">
+                        <labels>
+                          <label description="Request Type" languagecode="1033" />
+                        </labels>
+                        <control id="er_requesttype" classid="{3ef39988-22bb-4f0b-bbbe-64b5a3748aee}" datafieldname="er_requesttype" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{a2311666-8f21-4daa-ac5b-1b06b2e0ef41}">
+                        <labels>
+                          <label description="Description" languagecode="1033" />
+                        </labels>
+                        <control id="er_description" classid="{e0dece4b-6fc8-4a8f-a065-082708572369}" datafieldname="er_description" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{79bfffc6-e6ab-4dd7-ab6e-aa058a5347b1}">
+                        <labels>
+                          <label description="Status" languagecode="1033" />
+                        </labels>
+                        <control id="er_status" classid="{3ef39988-22bb-4f0b-bbbe-64b5a3748aee}" datafieldname="er_status" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{ab69e2f6-c75a-4042-aa07-d5d5e3ebfe4b}">
+                        <labels>
+                          <label description="Submission Date" languagecode="1033" />
+                        </labels>
+                        <control id="er_submissiondate" classid="{5b773807-9fb2-42db-97c3-7a91eff8adff}" datafieldname="er_submissiondate" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{748ddd49-2388-4c63-8143-55d168bd567a}">
+                        <labels>
+                          <label description="CID" languagecode="1033" />
+                        </labels>
+                        <control id="er_cid" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="er_cid" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

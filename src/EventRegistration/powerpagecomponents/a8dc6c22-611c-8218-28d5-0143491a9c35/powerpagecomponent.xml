@@ -1,0 +1,29 @@
+<powerpagecomponent powerpagecomponentid="a8dc6c22-611c-8218-28d5-0143491a9c35">
+  <content>{
+  "displayorder": 11,
+  "customcss": "",
+  "customjavascript": "",
+  "pagetemplateid": "fc18a914-844b-4d5a-8ab2-020e60610c58",
+  "parentpageid": "cb403430-2fb9-4936-a45c-db75f161d8ba",
+  "partialurl": "User-Access",
+  "isroot": true,
+  "title": "User Access",
+  "summary": "&lt;p&gt;This is a sample landing page designed to be a starting point for your website&lt;/p&gt;",
+  "copy": "",
+  "publishingstateid": "706c8d44-f8a7-4d37-803a-01690654b0df",
+  "enablerating": false,
+  "enabletracking": false,
+  "excludefromsearch": false,
+  "hiddenfromsitemap": true,
+  "sharedpageconfiguration": false
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>User Access</name>
+  <powerpagecomponenttype>2</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>193c85f4-6bd0-4d90-b34d-b93da1ca5eef</powerpagesiteid>
+  </powerpagesiteid>
+  <searchcontent>User AccessUser Access</searchcontent>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

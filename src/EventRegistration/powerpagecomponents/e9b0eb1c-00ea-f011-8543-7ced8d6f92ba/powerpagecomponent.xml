@@ -1,0 +1,17 @@
+<powerpagecomponent powerpagecomponentid="e9b0eb1c-00ea-f011-8543-7ced8d6f92ba">
+  <content>{
+  "value": "{% include 'Onboarding' %}",
+  "type": 756150000
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Account/SignIn/PageCopy</name>
+  <powerpagecomponenttype>7</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>193c85f4-6bd0-4d90-b34d-b93da1ca5eef</powerpagesiteid>
+  </powerpagesiteid>
+  <powerpagesitelanguageid>
+    <powerpagesitelanguageid>e44d1b13-a1ce-4442-90d4-a38a3d8d370c</powerpagesitelanguageid>
+  </powerpagesitelanguageid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

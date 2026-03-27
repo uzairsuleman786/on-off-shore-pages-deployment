@@ -1,0 +1,21 @@
+<powerpagecomponent powerpagecomponentid="a87aca06-1689-d12a-309e-b1cce0f0c8a1">
+  <content>{
+  "displayorder": 8,
+  "weblinksetid": "fb5102ab-fb35-4634-a3f0-01c3b8f7b704",
+  "pageid": "3b63a84f-b73d-383c-8e2a-88a2e1941331",
+  "publishingstateid": "706c8d44-f8a7-4d37-803a-01690654b0df",
+  "displaypagevalidation": false,
+  "displayimageonly": false,
+  "displaypagechildlinks": false,
+  "openinnewwindow": false,
+  "robotsfollowlink": true
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Login Page</name>
+  <powerpagecomponenttype>5</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>193c85f4-6bd0-4d90-b34d-b93da1ca5eef</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

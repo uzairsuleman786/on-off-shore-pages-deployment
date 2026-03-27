@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{fee971b4-223d-4ad1-9447-d19d3a067aeb}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab verticallayout="true" id="{504eedb0-c3b2-44f9-9620-ae7f6a2b14cf}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{14dc5bae-b725-489b-b739-5cf127fd1f0d}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{ab493019-bc31-47ad-9e90-dbc3d729694a}">
+                        <labels>
+                          <label description="Redeem" languagecode="1033" />
+                        </labels>
+                        <control id="er_redeem1" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="er_redeem1" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{c3d0a751-e798-49da-9864-0b78ea95712e}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{80aa0cf8-4d85-46b4-8be2-15bf0eb838ec}">
+                        <labels>
+                          <label description="Event" languagecode="1033" />
+                        </labels>
+                        <control id="er_event" classid="{270bd3db-d9af-4782-9025-509e298dec0a}" datafieldname="er_event" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{36d08b41-2c6a-4456-a2f8-e850be54d74c}">
+                        <labels>
+                          <label description="Is Used" languagecode="1033" />
+                        </labels>
+                        <control id="er_isused" classid="{67fac785-cd58-4f9f-abb3-4b7ddc6ed5ed}" datafieldname="er_isused" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{510ca9e3-649a-4a3b-a3f1-b8c8b18d5ded}">
+                        <labels>
+                          <label description="Used On" languagecode="1033" />
+                        </labels>
+                        <control id="er_usedon" classid="{5b773807-9fb2-42db-97c3-7a91eff8adff}" datafieldname="er_usedon" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{97129715-3ebb-4848-bbb6-a8e4eb40a9e5}">
+                        <labels>
+                          <label description="Contact" languagecode="1033" />
+                        </labels>
+                        <control id="er_usedby" classid="{270bd3db-d9af-4782-9025-509e298dec0a}" datafieldname="er_usedby" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

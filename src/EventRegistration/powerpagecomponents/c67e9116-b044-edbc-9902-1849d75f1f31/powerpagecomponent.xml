@@ -1,0 +1,121 @@
+<powerpagecomponent powerpagecomponentid="c67e9116-b044-edbc-9902-1849d75f1f31">
+  <content>{
+  "displayorder": 4,
+  "pagetemplateid": "fc18a914-844b-4d5a-8ab2-020e60610c58",
+  "parentpageid": "cb403430-2fb9-4936-a45c-db75f161d8ba",
+  "partialurl": "View-My-Registration",
+  "isroot": false,
+  "rootwebpageid": "6eb68f58-cd0c-992c-35fa-e8f01825510d",
+  "title": "View My Registration",
+  "summary": "&lt;p&gt;This is a sample landing page designed to be a starting point for your website&lt;/p&gt;",
+  "copy": "{% fetchxml userRegistration %}\n\n&lt;fetch version=\"1.0\" output-format=\"xml-platform\" mapping=\"logical\" distinct=\"false\"&gt;\n&lt;entity name=\"er_registration\"&gt;\n&lt;attribute name=\"er_registrationid\"/&gt;\n&lt;attribute name=\"er_registrantname\"/&gt;\n&lt;attribute name=\"createdon\"/&gt;\n&lt;attribute name=\"statuscode\"/&gt;\n&lt;attribute name=\"statecode\"/&gt;\n&lt;attribute name=\"er_registrationstatus\"/&gt;\n&lt;attribute name=\"er_registrationdate\"/&gt;\n&lt;attribute name=\"overriddencreatedon\"/&gt;\n&lt;attribute name=\"owningbusinessunit\"/&gt;\n&lt;attribute name=\"ownerid\"/&gt;\n&lt;attribute name=\"modifiedon\"/&gt;\n&lt;attribute name=\"modifiedonbehalfby\"/&gt;\n&lt;attribute name=\"modifiedby\"/&gt;\n&lt;attribute name=\"er_event\"/&gt;\n&lt;attribute name=\"er_email\"/&gt;\n&lt;attribute name=\"createdonbehalfby\"/&gt;\n&lt;attribute name=\"createdby\"/&gt;\n&lt;attribute name=\"er_registeredby\"/&gt;\n \n&lt;order attribute=\"er_registrantname\" descending=\"false\"/&gt;\n\n&lt;filter type =\"and\"&gt;\n  &lt;condition attribute=\"er_registeredby\" operator=\"eq\" value=\"{{user.id}}\" /&gt;\n&lt;/filter&gt;\n\n&lt;/entity&gt;\n&lt;/fetch&gt;\n\n{% endfetchxml %}\n\n&lt;div class=\"container mt-5\"&gt;\n\n  &lt;!-- Header --&gt;\n  &lt;div class=\"d-flex justify-content-between align-items-center mb-4\"&gt;\n    &lt;h2&gt;Registrations&lt;/h2&gt;\n    &lt;a href=\"/registration/\" class=\"btn btn-warning\"&gt;\n      New Registration\n    &lt;/a&gt;\n  &lt;/div&gt;\n\n  &lt;!-- Table --&gt;\n  &lt;table class=\"table table-bordered table-hover\"&gt;\n    &lt;thead class=\"thead-light\"&gt;\n      &lt;tr&gt;\n        &lt;th&gt;Registrant Name&lt;/th&gt;\n        &lt;th&gt;Email&lt;/th&gt;\n        &lt;th&gt;Registration Status&lt;/th&gt;\n        &lt;th style=\"width: 180px;\"&gt;Actions&lt;/th&gt;\n      &lt;/tr&gt;\n    &lt;/thead&gt;\n\n    &lt;tbody&gt;\n      {% if userRegistration.results.entities.size &gt; 0 %}\n        {% for result in userRegistration.results.entities %}\n          &lt;tr&gt;\n            &lt;td&gt;{{ result.er_registrantname }}&lt;/td&gt;\n            &lt;td&gt;{{ result.er_email }}&lt;/td&gt;\n            &lt;td&gt;{{ result.er_registrationstatus.label }}&lt;/td&gt;\n            &lt;td&gt;\n         &lt;a href=\"/edit-registration/?id={{result.er_registrationid}}\" class=\"btn btn-sm btn-warning\" title=\"Edit\"&gt;&lt;i class=\"fas fa-edit\"&gt;&lt;/i&gt;&lt;/a&gt; \n         &lt;a id=\"{{result.er_registrationid}}\" class=\"btn btn-sm btn-danger delete-btn\" title=\"Delete\"&gt;&lt;i class=\"fas fa-trash-alt\"&gt;&lt;/i&gt;&lt;/a&gt; \n         &lt;a href=\"/view-registration-detail/?id={{result.er_registrationid}}\" class=\"btn btn-sm btn-info\" title=\"View\"&gt;&lt;i class=\"fa fa-eye\": &lt;/td&gt;  \n\n\n\n              \n            &lt;/td&gt;\n          &lt;/tr&gt;\n        {% endfor %}\n      {% else %}\n        &lt;tr&gt;\n          &lt;td colspan=\"4\" class=\"text-center\"&gt;\n            No registrations found\n          &lt;/td&gt;\n        &lt;/tr&gt;\n      {% endif %}\n    &lt;/tbody&gt;\n  &lt;/table&gt;\n\n&lt;/div&gt;\n\n&lt;!-- Include Font Awesome for icons --&gt;\n&lt;link rel=\"stylesheet\"\nhref=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css\"&gt;\n{% include \"WebAPI Wrapper\" %}",
+  "publishingstateid": "706c8d44-f8a7-4d37-803a-01690654b0df",
+  "enablerating": false,
+  "enabletracking": false,
+  "excludefromsearch": false,
+  "hiddenfromsitemap": true,
+  "sharedpageconfiguration": false,
+  "feedbackpolicy": 756150000,
+  "customjavascript": "document.addEventListener('DOMContentLoaded', function () {\r\n\r\n  document.querySelectorAll('.delete-btn').forEach(button =&gt; {\r\n\r\n    button.addEventListener('click', function (event) {\r\n      event.preventDefault();\r\n\r\n      // ✅ Correctly get the record ID\r\n      const registerid = this.id;\r\n\r\n      if (!registerid) {\r\n        alert(\"Record ID not found.\");\r\n        return;\r\n      }\r\n\r\n      // Confirm deletion\r\n      if (confirm('Are you sure you want to delete this Registration?')) {\r\n\r\n        webapi.safeAjax({\r\n          type: \"DELETE\",\r\n          url: \"/_api/er_registrations(\" + registerid + \")\",\r\n          contentType: \"application/json\",\r\n          success: function () {\r\n            alert(\"Deleted Record Successfully\");\r\n            location.reload();\r\n          },\r\n          error: function (xhr) {\r\n            alert(\"Delete failed: \" + xhr.responseText);\r\n          }\r\n        });\r\n\r\n      }\r\n    });\r\n\r\n  });\r\n\r\n});"
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>View My Registration</name>
+  <powerpagecomponenttype>2</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>193c85f4-6bd0-4d90-b34d-b93da1ca5eef</powerpagesiteid>
+  </powerpagesiteid>
+  <powerpagesitelanguageid>
+    <powerpagesitelanguageid>e44d1b13-a1ce-4442-90d4-a38a3d8d370c</powerpagesitelanguageid>
+  </powerpagesitelanguageid>
+  <searchcontent>View My Registration{% fetchxml userRegistration %}
+
+&lt;fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false"&gt;
+&lt;entity name="er_registration"&gt;
+&lt;attribute name="er_registrationid"/&gt;
+&lt;attribute name="er_registrantname"/&gt;
+&lt;attribute name="createdon"/&gt;
+&lt;attribute name="statuscode"/&gt;
+&lt;attribute name="statecode"/&gt;
+&lt;attribute name="er_registrationstatus"/&gt;
+&lt;attribute name="er_registrationdate"/&gt;
+&lt;attribute name="overriddencreatedon"/&gt;
+&lt;attribute name="owningbusinessunit"/&gt;
+&lt;attribute name="ownerid"/&gt;
+&lt;attribute name="modifiedon"/&gt;
+&lt;attribute name="modifiedonbehalfby"/&gt;
+&lt;attribute name="modifiedby"/&gt;
+&lt;attribute name="er_event"/&gt;
+&lt;attribute name="er_email"/&gt;
+&lt;attribute name="createdonbehalfby"/&gt;
+&lt;attribute name="createdby"/&gt;
+&lt;attribute name="er_registeredby"/&gt;
+ 
+&lt;order attribute="er_registrantname" descending="false"/&gt;
+
+&lt;filter type ="and"&gt;
+  &lt;condition attribute="er_registeredby" operator="eq" value="{{user.id}}" /&gt;
+&lt;/filter&gt;
+
+&lt;/entity&gt;
+&lt;/fetch&gt;
+
+{% endfetchxml %}
+
+&lt;div class="container mt-5"&gt;
+
+  &lt;!-- Header --&gt;
+  &lt;div class="d-flex justify-content-between align-items-center mb-4"&gt;
+    &lt;h2&gt;Registrations&lt;/h2&gt;
+    &lt;a href="/registration/" class="btn btn-warning"&gt;
+      New Registration
+    &lt;/a&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Table --&gt;
+  &lt;table class="table table-bordered table-hover"&gt;
+    &lt;thead class="thead-light"&gt;
+      &lt;tr&gt;
+        &lt;th&gt;Registrant Name&lt;/th&gt;
+        &lt;th&gt;Email&lt;/th&gt;
+        &lt;th&gt;Registration Status&lt;/th&gt;
+        &lt;th style="width: 180px;"&gt;Actions&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+
+    &lt;tbody&gt;
+      {% if userRegistration.results.entities.size &gt; 0 %}
+        {% for result in userRegistration.results.entities %}
+          &lt;tr&gt;
+            &lt;td&gt;{{ result.er_registrantname }}&lt;/td&gt;
+            &lt;td&gt;{{ result.er_email }}&lt;/td&gt;
+            &lt;td&gt;{{ result.er_registrationstatus.label }}&lt;/td&gt;
+            &lt;td&gt;
+         &lt;a href="/edit-registration/?id={{result.er_registrationid}}" class="btn btn-sm btn-warning" title="Edit"&gt;&lt;i class="fas fa-edit"&gt;&lt;/i&gt;&lt;/a&gt; 
+         &lt;a id="{{result.er_registrationid}}" class="btn btn-sm btn-danger delete-btn" title="Delete"&gt;&lt;i class="fas fa-trash-alt"&gt;&lt;/i&gt;&lt;/a&gt; 
+         &lt;a href="/view-registration-detail/?id={{result.er_registrationid}}" class="btn btn-sm btn-info" title="View"&gt;&lt;i class="fa fa-eye": &lt;/td&gt;  
+
+
+
+              
+            &lt;/td&gt;
+          &lt;/tr&gt;
+        {% endfor %}
+      {% else %}
+        &lt;tr&gt;
+          &lt;td colspan="4" class="text-center"&gt;
+            No registrations found
+          &lt;/td&gt;
+        &lt;/tr&gt;
+      {% endif %}
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+
+&lt;/div&gt;
+
+&lt;!-- Include Font Awesome for icons --&gt;
+&lt;link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"&gt;
+{% include "WebAPI Wrapper" %}View My Registration</searchcontent>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

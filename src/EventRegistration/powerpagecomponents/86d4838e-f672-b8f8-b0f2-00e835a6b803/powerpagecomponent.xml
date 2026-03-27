@@ -1,0 +1,105 @@
+<powerpagecomponent powerpagecomponentid="86d4838e-f672-b8f8-b0f2-00e835a6b803">
+  <content>{"displayorder":6,"pagetemplateid":"fc18a914-844b-4d5a-8ab2-020e60610c58","parentpageid":"cb403430-2fb9-4936-a45c-db75f161d8ba","partialurl":"edit-registration","isroot":false,"rootwebpageid":"094fae8b-7c09-4e2b-7037-1d7d8873ebe8","title":"Edit Registration","summary":"&lt;p&gt;This is a sample landing page designed to be a starting point for your website&lt;/p&gt;","copy":"{% assign id_param = request.params[\"id\"] %}\n\n{% fetchxml events %}\n&lt;fetch version=\"1.0\" mapping=\"logical\"&gt;\n  &lt;entity name=\"er_event\"&gt;\n    &lt;attribute name=\"er_eventid\" /&gt;\n    &lt;attribute name=\"er_eventname\" /&gt;\n    &lt;order attribute=\"er_eventname\" /&gt;\n  &lt;/entity&gt;\n&lt;/fetch&gt;\n{% endfetchxml %}\n\n{% fetchxml userRegistrationDetails %}\n&lt;fetch version=\"1.0\" mapping=\"logical\"&gt;\n  &lt;entity name=\"er_registration\"&gt;\n    &lt;attribute name=\"er_registrationid\" /&gt;\n    &lt;attribute name=\"er_registrantname\" /&gt;\n    &lt;attribute name=\"er_email\" /&gt;\n    &lt;attribute name=\"er_event\"/&gt;\n    &lt;attribute name=\"er_registrationstatus\" /&gt;\n \n    &lt;filter&gt;\n      &lt;condition attribute=\"er_registrationid\" operator=\"eq\" value=\"{{ id_param }}\" /&gt;\n    &lt;/filter&gt;\n  &lt;/entity&gt;\n&lt;/fetch&gt;\n{% endfetchxml %}\n\n\n&lt;div class=\"container\" style=\"background-color:rgba(255,255,255,0.9); border-radius:10px; padding:20px;\"&gt;\n  &lt;form id=\"EditRegistrationForm\"&gt;\n\n    &lt;h2 class=\"mb-4\"&gt;Edit Event Registration&lt;/h2&gt;\n\n    {% if id_param and userRegistrationDetails.results.entities.size &gt; 0 %}\n    {% assign userRegistration = userRegistrationDetails.results.entities[0] %}\n\n    &lt;!-- Registrant Name --&gt;\n    &lt;div class=\"mb-3\"&gt;\n      &lt;label class=\"form-label\"&gt;Registrant Name&lt;/label&gt;\n      &lt;input type=\"text\" id=\"registrantName\" name=\"registrantName\" class=\"form-control\"\n        value=\"{{ userRegistration.er_registrantname }}\" required /&gt;\n    &lt;/div&gt;\n\n    &lt;!-- Email --&gt;\n    &lt;div class=\"mb-3\"&gt;\n      &lt;label class=\"form-label\"&gt;Email&lt;/label&gt;\n      &lt;input type=\"email\" id=\"email\" name=\"email\" class=\"form-control\" value=\"{{ userRegistration.er_email }}\"\n        required /&gt;\n    &lt;/div&gt;\n\n    &lt;!-- Registration Status --&gt;\n    &lt;div class=\"mb-3\"&gt;\n      &lt;label class=\"form-label\"&gt;Registration Status&lt;/label&gt;\n      &lt;select id=\"status\" name=\"status\" class=\"form-control\" required&gt;\n        &lt;option value=\"0\" {% if userRegistration.er_registrationstatus.value==0 %}selected{% endif %}&gt;Pending&lt;/option&gt;\n        &lt;option value=\"1\" {% if userRegistration.er_registrationstatus.value==1 %}selected{% endif %}&gt;Confirmed&lt;/option&gt;\n        &lt;option value=\"2\" {% if userRegistration.er_registrationstatus.value==2 %}selected{% endif %}&gt;Cancelled&lt;/option&gt;\n      &lt;/select&gt;\n    &lt;/div&gt;\n    &lt;!-- Event Dropdown --&gt;\n    &lt;div class=\"form-group mb-3\"&gt;1{{userRegistration.er_event.value}}2{{userRegistration.er_event.Value}}3{{userRegistration.er_event.label}}4{{userRegistration.er_event.id}}\n      &lt;label for=\"eventRegister\" class=\"form-label\"&gt; Event Name:&lt;/label&gt;\n      &lt;select id=\"event\" name=\"event\" required=\"\" class=\"form-control\"&gt;\n        &lt;option value=\"\"&gt;Select Category&lt;/option&gt;\n        {% for result in events.results.entities %}\n        &lt;p&gt;{{result.er_eventid}} _ {{userRegistration.er_event.id}}&lt;/p&gt;\n        &lt;option value=\"{{result.er_eventid}}\"{% if userRegistration.er_event.id == {{result.er_eventid}} %}selected{% endif %}&gt;{{ result.er_eventname }}&lt;/option&gt;\n        {% endfor %}\n\n      &lt;/select&gt;\n    &lt;/div&gt;\n\n\n\n    &lt;button type=\"submit\" class=\"btn btn-primary w-100\"&gt;Update Registration&lt;/button&gt;\n\n    {% else %}\n    &lt;div class=\"alert alert-danger\"&gt;\n      Registration record not found.&lt;br /&gt;\n      Please check the link or your permissions.\n    &lt;/div&gt;  \n    {% endif %}\n\n  &lt;/form&gt;\n&lt;/div&gt;\n\n{% include \"WebAPI Wrapper\" %}\n\n&lt;!-- External JS --&gt;\n&lt;script src=\"/webresources/edit-registration.js\"&gt;&lt;/script&gt;","publishingstateid":"706c8d44-f8a7-4d37-803a-01690654b0df","enablerating":false,"enabletracking":false,"excludefromsearch":false,"hiddenfromsitemap":true,"sharedpageconfiguration":false,"feedbackpolicy":756150000,"customjavascript":"document.addEventListener('DOMContentLoaded', function() {\r\n    const form = document.getElementById('EditRegistrationForm');\r\n    if (!form) return;\r\n\r\n    form.addEventListener('submit', function(event) {\r\n        event.preventDefault();\r\n\r\n        // Grab form values\r\n        const name = document.getElementById('registrantName').value.trim();\r\n        const email = document.getElementById('email').value.trim();\r\n        const eventId = document.getElementById('event').value;\r\n        const status = parseInt(document.getElementById('status').value, 10); // important: convert to integer\r\n\r\n        // Get ID from URL\r\n        const url = new URL(window.location.href);\r\n        const id = url.searchParams.get('id');\r\n\r\n        if (!id) {\r\n            alert(\"Registration ID not found in URL!\");\r\n            return;\r\n        }\r\n\r\n        // PATCH request to update registration\r\n        webapi.safeAjax({\r\n            type: \"PATCH\",\r\n            url: \"/_api/er_registrations(\" + id + \")\",\r\n            contentType: \"application/json\",\r\n            data: JSON.stringify({\r\n                er_registrantname: name,\r\n                er_email: email,\r\n                er_registrationstatus: status,\r\n                \"er_Event@odata.bind\": `/er_events(${eventId})`\r\n            }),\r\n            success: function(res) {\r\n                alert(\"Registration updated successfully!\");\r\n                window.location.href = \"/view-my-registration\"; // redirect after update\r\n            },\r\n            error: function(err) {\r\n                console.error(err);\r\n                alert(\"Error updating registration. Check console for details.\");\r\n            }\r\n        });\r\n    });\r\n});\r\n"}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Edit Registration</name>
+  <powerpagecomponenttype>2</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>193c85f4-6bd0-4d90-b34d-b93da1ca5eef</powerpagesiteid>
+  </powerpagesiteid>
+  <powerpagesitelanguageid>
+    <powerpagesitelanguageid>e44d1b13-a1ce-4442-90d4-a38a3d8d370c</powerpagesitelanguageid>
+  </powerpagesitelanguageid>
+  <searchcontent>Edit Registration{% assign id_param = request.params["id"] %}
+
+{% fetchxml events %}
+&lt;fetch version="1.0" mapping="logical"&gt;
+  &lt;entity name="er_event"&gt;
+    &lt;attribute name="er_eventid" /&gt;
+    &lt;attribute name="er_eventname" /&gt;
+    &lt;order attribute="er_eventname" /&gt;
+  &lt;/entity&gt;
+&lt;/fetch&gt;
+{% endfetchxml %}
+
+{% fetchxml userRegistrationDetails %}
+&lt;fetch version="1.0" mapping="logical"&gt;
+  &lt;entity name="er_registration"&gt;
+    &lt;attribute name="er_registrationid" /&gt;
+    &lt;attribute name="er_registrantname" /&gt;
+    &lt;attribute name="er_email" /&gt;
+    &lt;attribute name="er_event"/&gt;
+    &lt;attribute name="er_registrationstatus" /&gt;
+ 
+    &lt;filter&gt;
+      &lt;condition attribute="er_registrationid" operator="eq" value="{{ id_param }}" /&gt;
+    &lt;/filter&gt;
+  &lt;/entity&gt;
+&lt;/fetch&gt;
+{% endfetchxml %}
+
+
+&lt;div class="container" style="background-color:rgba(255,255,255,0.9); border-radius:10px; padding:20px;"&gt;
+  &lt;form id="EditRegistrationForm"&gt;
+
+    &lt;h2 class="mb-4"&gt;Edit Event Registration&lt;/h2&gt;
+
+    {% if id_param and userRegistrationDetails.results.entities.size &gt; 0 %}
+    {% assign userRegistration = userRegistrationDetails.results.entities[0] %}
+
+    &lt;!-- Registrant Name --&gt;
+    &lt;div class="mb-3"&gt;
+      &lt;label class="form-label"&gt;Registrant Name&lt;/label&gt;
+      &lt;input type="text" id="registrantName" name="registrantName" class="form-control"
+        value="{{ userRegistration.er_registrantname }}" required /&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Email --&gt;
+    &lt;div class="mb-3"&gt;
+      &lt;label class="form-label"&gt;Email&lt;/label&gt;
+      &lt;input type="email" id="email" name="email" class="form-control" value="{{ userRegistration.er_email }}"
+        required /&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Registration Status --&gt;
+    &lt;div class="mb-3"&gt;
+      &lt;label class="form-label"&gt;Registration Status&lt;/label&gt;
+      &lt;select id="status" name="status" class="form-control" required&gt;
+        &lt;option value="0" {% if userRegistration.er_registrationstatus.value==0 %}selected{% endif %}&gt;Pending&lt;/option&gt;
+        &lt;option value="1" {% if userRegistration.er_registrationstatus.value==1 %}selected{% endif %}&gt;Confirmed&lt;/option&gt;
+        &lt;option value="2" {% if userRegistration.er_registrationstatus.value==2 %}selected{% endif %}&gt;Cancelled&lt;/option&gt;
+      &lt;/select&gt;
+    &lt;/div&gt;
+    &lt;!-- Event Dropdown --&gt;
+    &lt;div class="form-group mb-3"&gt;1{{userRegistration.er_event.value}}2{{userRegistration.er_event.Value}}3{{userRegistration.er_event.label}}4{{userRegistration.er_event.id}}
+      &lt;label for="eventRegister" class="form-label"&gt; Event Name:&lt;/label&gt;
+      &lt;select id="event" name="event" required="" class="form-control"&gt;
+        &lt;option value=""&gt;Select Category&lt;/option&gt;
+        {% for result in events.results.entities %}
+        &lt;p&gt;{{result.er_eventid}} _ {{userRegistration.er_event.id}}&lt;/p&gt;
+        &lt;option value="{{result.er_eventid}}"{% if userRegistration.er_event.id == {{result.er_eventid}} %}selected{% endif %}&gt;{{ result.er_eventname }}&lt;/option&gt;
+        {% endfor %}
+
+      &lt;/select&gt;
+    &lt;/div&gt;
+
+
+
+    &lt;button type="submit" class="btn btn-primary w-100"&gt;Update Registration&lt;/button&gt;
+
+    {% else %}
+    &lt;div class="alert alert-danger"&gt;
+      Registration record not found.&lt;br /&gt;
+      Please check the link or your permissions.
+    &lt;/div&gt;  
+    {% endif %}
+
+  &lt;/form&gt;
+&lt;/div&gt;
+
+{% include "WebAPI Wrapper" %}
+
+&lt;!-- External JS --&gt;
+&lt;script src="/webresources/edit-registration.js"&gt;&lt;/script&gt;Edit Registration</searchcontent>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

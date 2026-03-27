@@ -1,0 +1,303 @@
+<powerpagecomponent powerpagecomponentid="bc83b2a6-7bbf-c453-80d6-f3feabdf2e2f">
+  <content>{
+  "filecontent": null,
+  "displayorder": 7,
+  "pagetemplateid": "fc18a914-844b-4d5a-8ab2-020e60610c58",
+  "parentpageid": "cb403430-2fb9-4936-a45c-db75f161d8ba",
+  "partialurl": "Content-Snipped-Test-deleted",
+  "isroot": false,
+  "rootwebpageid": "03bf912f-8605-ec75-142e-9577f6514589",
+  "title": "Content Snipped Test",
+  "summary": "&lt;p&gt;This is a sample landing page designed to be a starting point for your website&lt;/p&gt;",
+  "copy": "\n{% comment %}\n  Power Pages Login Template\n  - Shows local sign-in (username/password) and external identity providers\n  - Redirects signed-in users away from login page\n{% endcomment %}\n\n{% if user %}\n  &lt;!-- If the user is already signed in, send them to homepage or a dashboard --&gt;\n  &lt;script&gt;\n    window.location.href = \"{{ website.adx_homepage.url | default: '/' }}\";\n  &lt;/script&gt;\n{% endif %}\n\n&lt;!DOCTYPE html&gt;\n&lt;html lang=\"en\"&gt;\n&lt;head&gt;\n  &lt;meta charset=\"utf-8\"&gt;\n  &lt;title&gt;Sign in&lt;/title&gt;\n  &lt;meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"&gt;\n\n  &lt;!-- Optional: Use Power Pages’ Bootstrap if present; otherwise the CSS below handles layout --&gt;\n  &lt;style&gt;\n    :root{\n      --bg: #0f172a;\n      --card: #111827;\n      --text: #e5e7eb;\n      --muted: #9ca3af;\n      --primary: #2563eb;\n      --primary-700:#1d4ed8;\n      --border:#1f2937;\n      --success:#16a34a;\n      --error:#ef4444;\n    }\n\n    *{box-sizing:border-box}\n    body{\n      margin:0;\n      min-height:100vh;\n      display:flex;\n      align-items:center;\n      justify-content:center;\n      background: radial-gradient(1000px 600px at 20% 10%, #0b1226 20%, var(--bg)),\n                  radial-gradient(800px 480px at 80% 80%, #0b1226 10%, #0f172a);\n      font-family: system-ui, -apple-system, Segoe UI, Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", \"Liberation Sans\", sans-serif;\n      color:var(--text);\n    }\n    .container{\n      width:100%;\n      max-width:960px;\n      padding:24px;\n    }\n    .card{\n      display:grid;\n      grid-template-columns: 1fr 1fr;\n      gap:0;\n      background:rgba(17,24,39,0.75);\n      border:1px solid var(--border);\n      border-radius:16px;\n      overflow:hidden;\n      box-shadow: 0 20px 40px rgba(0,0,0,0.45);\n      backdrop-filter: blur(6px);\n    }\n    @media (max-width: 900px){\n      .card{ grid-template-columns: 1fr; }\n      .visual{ display:none; }\n    }\n\n    .content{\n      padding:32px 32px 28px;\n    }\n    .brand{\n      display:flex; align-items:center; gap:12px; margin-bottom:18px;\n    }\n    .brand .logo{\n      width:40px; height:40px; border-radius:8px;\n      background: linear-gradient(135deg, #2563eb, #7c3aed);\n      box-shadow:0 8px 20px rgba(37,99,235,0.4);\n    }\n    .brand .title{\n      font-weight:700; letter-spacing:0.2px; font-size:18px; color:#ffffff;\n    }\n\n    h1{ margin:0 0 8px; font-size:28px; font-weight:700; }\n    .subtitle{ margin:0 0 18px; color:var(--muted); font-size:14px; }\n\n    .field{\n      margin-bottom:14px;\n    }\n    label{\n      display:block; margin:0 0 8px; font-size:13px; color:var(--muted);\n    }\n    input[type=\"text\"], input[type=\"email\"], input[type=\"password\"]{\n      width:100%; padding:12px 14px; border-radius:10px;\n      border:1px solid var(--border); background:#0b1220; color:var(--text);\n      outline:none; transition: border-color .18s ease, box-shadow .18s ease;\n    }\n    input:focus{\n      border-color: #3b82f6;\n      box-shadow: 0 0 0 3px rgba(59,130,246,0.15);\n    }\n\n    .actions{\n      display:flex; align-items:center; justify-content:space-between; margin-top:8px;\n    }\n    .actions a{ color:#93c5fd; text-decoration:none; font-size:13px; }\n    .actions a:hover{ text-decoration:underline; }\n\n    .btn{\n      display:inline-flex; align-items:center; justify-content:center;\n      gap:8px; padding:12px 14px; border-radius:10px; border:1px solid transparent;\n      background:var(--primary); color:#fff; font-weight:600; cursor:pointer;\n      transition: background .18s ease, transform .06s ease;\n    }\n    .btn:hover{ background:var(--primary-700); }\n    .btn:active{ transform: translateY(1px); }\n\n    .divider{\n      display:flex; align-items:center; gap:10px; margin:18px 0;\n      color:var(--muted); font-size:13px;\n    }\n    .divider::before, .divider::after{\n      content:\"\"; flex:1; height:1px; background:var(--border);\n    }\n\n    .providers{\n      display:grid; grid-template-columns: repeat(2, 1fr); gap:10px;\n    }\n    @media (max-width:560px){ .providers{ grid-template-columns: 1fr; } }\n\n    .btn-secondary{\n      background:#0b1220; border-color:var(--border); color:var(--text);\n    }\n    .btn-secondary:hover{ border-color:#334155; background:#0e1626; }\n\n    .foot{\n      margin-top:16px; font-size:13px; color:var(--muted);\n    }\n    .foot a{ color:#93c5fd; text-decoration:none; }\n    .foot a:hover{ text-decoration:underline; }\n\n    /* Right visual panel */\n    .visual{\n      position:relative; background: radial-gradient(1200px 600px at 50% 20%, rgba(37,99,235,0.18), transparent),\n                         linear-gradient(180deg, rgba(17,24,39,0.7), rgba(17,24,39,0.6));\n      padding:24px;\n    }\n    .visual .headline{\n      position:absolute; bottom:24px; left:24px; right:24px;\n      color:#dbeafe;\n      font-weight:600;\n      text-shadow:0 2px 12px rgba(0,0,0,0.7);\n    }\n    .tag{\n      display:inline-block; margin-top:10px; font-size:12px; color:#a5b4fc;\n    }\n\n    /* Simple alert styles if you want to surface liquid messages */\n    .alert{\n      margin:10px 0 14px; padding:10px 12px; border-radius:10px; font-size:13px;\n      border:1px solid #334155; background:#0b1628;\n    }\n    .alert-error{ border-color:#7f1d1d; background:rgba(239,68,68,0.08); color:#fecaca; }\n    .alert-success{ border-color:#14532d; background:rgba(22,163,74,0.08); color:#bbf7d0; }\n  &lt;/style&gt;\n&lt;/head&gt;\n&lt;body&gt;\n  &lt;div class=\"container\"&gt;\n    &lt;div class=\"card\"&gt;\n      &lt;!-- Left: Sign-in form --&gt;\n      &lt;section class=\"content\"&gt;\n        &lt;div class=\"brand\"&gt;\n          &lt;div class=\"logo\" aria-hidden=\"true\"&gt;&lt;/div&gt;\n          &lt;div class=\"title\"&gt;{{ website.name | default: \"Contoso\" }}&lt;/div&gt;\n        &lt;/div&gt;\n\n        &lt;h1&gt;Sign in&lt;/h1&gt;\n        &lt;p class=\"subtitle\"&gt;Access your account to manage records, view dashboards, and more.&lt;/p&gt;\n\n        {# Optional: Show portal messages (e.g., errors) #}\n        {% assign msg = request.params['message'] %}\n        {% if msg %}\n          &lt;div class=\"alert alert-error\"&gt;{{ msg }}&lt;/div&gt;\n        {% endif %}\n\n        &lt;!-- Local sign-in posts to the built-in /signin endpoint --&gt;\n        &lt;form method=\"post\" action=\"/signin\" autocomplete=\"on\" novalid\"{{ request.url }}\"/&gt;\n\n          &lt;div class=\"field\"&gt;\n            &lt;label for=\"username\"&gt;Email or Username&lt;/label&gt;\n            &lt;input id=\"username\" name=\"username\" type=\"text\" required placeholder=\"you@example.com\"&gt;\n          &lt;/div&gt;\n\n          &lt;div class=\"field\"&gt;\n            &lt;label for=\"password\"&gt;Password&lt;/label&gt;\n            &lt;input id=\"password\" name=\"password\" type=\"password\" required placeholder=\"••••••••\"&gt;\n          &lt;/div&gt;\n\n          &lt;div class=\"actions\"&gt;\n            /forgotpassword/Forgot password?&lt;/a&gt;\n            &lt;button type=\"submit\" class=\"btn\"&gt;Sign in&lt;/button&gt;\n          &lt;/div&gt;\n        &lt;/form&gt;\n\n        &lt;div class=\"divider\"&gt;&lt;span&gt;Or continue with&lt;/span&gt;&lt;/div&gt;\n\n        &lt;!-- External identity providers --&gt;\n        &lt;div class=\"providers\"&gt;\n          &lt;!-- Remove any providers you don't use --&gt;\n          &lt;a class=\"btn btnAzureAD&amp;returnUrl={{ request.url }}\n            &lt;!-- Simple icon dots --&gt;\n            &lt;span style=\"width:8px;height:8px;border-radius:50%;background:#2563eb;display:inline-block\"&gt;&lt;/span&gt;\n            &lt;span&gt;Azure AD&lt;/span&gt;\n          &lt;/a&gt;\n\n          &lt;a class=\"btn btn-secondary\" href=\"/signin?provider=MicrosoftAccount&amp;returnUrl={{ request.url8px;height:8px;border-radius:50%;background:#0078d4;display:inline-block}}\"&gt;&lt;/span&gt;\n            &lt;span&gt;Microsoft&lt;/span&gt;\n          &lt;/a&gt;\n\n          /signin?provider=Google&amp;returnUrl={{ request.url }}\n            &lt;span style=\"width:8px;height:8px;border-radius:50%;background:#ea4335;display:inline-block\"&gt;&lt;/span&gt;\n            &lt;span&gt;Google&lt;/span&gt;\n          &lt;/a&gt;\n\n          /signin?provider=LinkedIn&amp;returnUrl={{ request.url }}\n            &lt;span style=\"width:8px;height:8px;border-radius:50%;background:#0a66c2;display:inline-block\"&gt;&lt;/span&gt;\n            &lt;span&gt;LinkedIn&lt;/span&gt;\n          &lt;/a&gt;\n\n          /signin?provider=Facebook&amp;returnUrl={{ request.url }}\n            &lt;span style=\"width:8px;height:8px;border-radius:50%;background:#1877f2;display:inline-block\"&gt;&lt;/span&gt;\n            &lt;span&gt;Facebook&lt;/span&gt;\n          &lt;/a&gt;\n        &lt;/div&gt;\n\n        &lt;div class=\"foot\"&gt;\n          &lt;p&gt;New here? /register/Create an account&lt;/a&gt;&lt;/p&gt;\n          &lt;p&gt;By signing in, you agree to our &lt;aerms/Terms of Use&lt;/a&gt; and &lt;a href=\"/privacyPolicy&lt;/a&gt;.&lt;/p&gt;\n        &lt;/div&gt;\n      &lt;/section&gt;\n\n      &lt;!-- Right: Visual / marketing panel --&gt;\n      &lt;aside class=\"visual\"&gt;\n        &lt;!-- You can replace this with an image: &lt;img src=\"/-/media/your --&gt;\n        &lt;h3 class=\"headline\"&gt;\n          Secure access to your Power Pages site.&lt;br&gt;\n          Role-based permissions. Seamless external identity. Auditable sign-ins.\n          &lt;div class=\"tag\"&gt;Powered by Microsoft Dataverse &amp; Power Pages&lt;/div&gt;\n        &lt;/h3&gt;\n      &lt;/aside&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n\n  &lt;!-- Optional: light client-side validation --&gt;\n  &lt;script&gt;\n    (function(){\n      const form = document.querySelector('form[action=\"/signin\"]');\n      if(!form) return;\n      form.addEventListener('submit', function(e){\n        const u = form.querySelector('[name=\"username\"]');\n        const p = form.querySelector('[name=\"password\"]');\n        if(!u.value.trim() || !p.value.trim()){\n          e.preventDefault();\n          alert('Please enter your username and password.');\n        }\n      });\n    })();\n  &lt;/script&gt;\n&lt;/body&gt;\n&lt;/html&gt;\n",
+  "publishingstateid": "706c8d44-f8a7-4d37-803a-01690654b0df",
+  "enablerating": false,
+  "enabletracking": false,
+  "excludefromsearch": false,
+  "hiddenfromsitemap": true,
+  "sharedpageconfiguration": false,
+  "feedbackpolicy": 756150000
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Content Snipped Test-deleted</name>
+  <powerpagecomponenttype>2</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>193c85f4-6bd0-4d90-b34d-b93da1ca5eef</powerpagesiteid>
+  </powerpagesiteid>
+  <powerpagesitelanguageid>
+    <powerpagesitelanguageid>e44d1b13-a1ce-4442-90d4-a38a3d8d370c</powerpagesitelanguageid>
+  </powerpagesitelanguageid>
+  <searchcontent>Content Snipped Test
+{% comment %}
+  Power Pages Login Template
+  - Shows local sign-in (username/password) and external identity providers
+  - Redirects signed-in users away from login page
+{% endcomment %}
+
+{% if user %}
+  &lt;!-- If the user is already signed in, send them to homepage or a dashboard --&gt;
+  &lt;script&gt;
+    window.location.href = "{{ website.adx_homepage.url | default: '/' }}";
+  &lt;/script&gt;
+{% endif %}
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;Sign in&lt;/title&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+
+  &lt;!-- Optional: Use Power Pages’ Bootstrap if present; otherwise the CSS below handles layout --&gt;
+  &lt;style&gt;
+    :root{
+      --bg: #0f172a;
+      --card: #111827;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --primary: #2563eb;
+      --primary-700:#1d4ed8;
+      --border:#1f2937;
+      --success:#16a34a;
+      --error:#ef4444;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background: radial-gradient(1000px 600px at 20% 10%, #0b1226 20%, var(--bg)),
+                  radial-gradient(800px 480px at 80% 80%, #0b1226 10%, #0f172a);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      color:var(--text);
+    }
+    .container{
+      width:100%;
+      max-width:960px;
+      padding:24px;
+    }
+    .card{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:0;
+      background:rgba(17,24,39,0.75);
+      border:1px solid var(--border);
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.45);
+      backdrop-filter: blur(6px);
+    }
+    @media (max-width: 900px){
+      .card{ grid-template-columns: 1fr; }
+      .visual{ display:none; }
+    }
+
+    .content{
+      padding:32px 32px 28px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px; margin-bottom:18px;
+    }
+    .brand .logo{
+      width:40px; height:40px; border-radius:8px;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      box-shadow:0 8px 20px rgba(37,99,235,0.4);
+    }
+    .brand .title{
+      font-weight:700; letter-spacing:0.2px; font-size:18px; color:#ffffff;
+    }
+
+    h1{ margin:0 0 8px; font-size:28px; font-weight:700; }
+    .subtitle{ margin:0 0 18px; color:var(--muted); font-size:14px; }
+
+    .field{
+      margin-bottom:14px;
+    }
+    label{
+      display:block; margin:0 0 8px; font-size:13px; color:var(--muted);
+    }
+    input[type="text"], input[type="email"], input[type="password"]{
+      width:100%; padding:12px 14px; border-radius:10px;
+      border:1px solid var(--border); background:#0b1220; color:var(--text);
+      outline:none; transition: border-color .18s ease, box-shadow .18s ease;
+    }
+    input:focus{
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+    }
+
+    .actions{
+      display:flex; align-items:center; justify-content:space-between; margin-top:8px;
+    }
+    .actions a{ color:#93c5fd; text-decoration:none; font-size:13px; }
+    .actions a:hover{ text-decoration:underline; }
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:8px; padding:12px 14px; border-radius:10px; border:1px solid transparent;
+      background:var(--primary); color:#fff; font-weight:600; cursor:pointer;
+      transition: background .18s ease, transform .06s ease;
+    }
+    .btn:hover{ background:var(--primary-700); }
+    .btn:active{ transform: translateY(1px); }
+
+    .divider{
+      display:flex; align-items:center; gap:10px; margin:18px 0;
+      color:var(--muted); font-size:13px;
+    }
+    .divider::before, .divider::after{
+      content:""; flex:1; height:1px; background:var(--border);
+    }
+
+    .providers{
+      display:grid; grid-template-columns: repeat(2, 1fr); gap:10px;
+    }
+    @media (max-width:560px){ .providers{ grid-template-columns: 1fr; } }
+
+    .btn-secondary{
+      background:#0b1220; border-color:var(--border); color:var(--text);
+    }
+    .btn-secondary:hover{ border-color:#334155; background:#0e1626; }
+
+    .foot{
+      margin-top:16px; font-size:13px; color:var(--muted);
+    }
+    .foot a{ color:#93c5fd; text-decoration:none; }
+    .foot a:hover{ text-decoration:underline; }
+
+    /* Right visual panel */
+    .visual{
+      position:relative; background: radial-gradient(1200px 600px at 50% 20%, rgba(37,99,235,0.18), transparent),
+                         linear-gradient(180deg, rgba(17,24,39,0.7), rgba(17,24,39,0.6));
+      padding:24px;
+    }
+    .visual .headline{
+      position:absolute; bottom:24px; left:24px; right:24px;
+      color:#dbeafe;
+      font-weight:600;
+      text-shadow:0 2px 12px rgba(0,0,0,0.7);
+    }
+    .tag{
+      display:inline-block; margin-top:10px; font-size:12px; color:#a5b4fc;
+    }
+
+    /* Simple alert styles if you want to surface liquid messages */
+    .alert{
+      margin:10px 0 14px; padding:10px 12px; border-radius:10px; font-size:13px;
+      border:1px solid #334155; background:#0b1628;
+    }
+    .alert-error{ border-color:#7f1d1d; background:rgba(239,68,68,0.08); color:#fecaca; }
+    .alert-success{ border-color:#14532d; background:rgba(22,163,74,0.08); color:#bbf7d0; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="container"&gt;
+    &lt;div class="card"&gt;
+      &lt;!-- Left: Sign-in form --&gt;
+      &lt;section class="content"&gt;
+        &lt;div class="brand"&gt;
+          &lt;div class="logo" aria-hidden="true"&gt;&lt;/div&gt;
+          &lt;div class="title"&gt;{{ website.name | default: "Contoso" }}&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;h1&gt;Sign in&lt;/h1&gt;
+        &lt;p class="subtitle"&gt;Access your account to manage records, view dashboards, and more.&lt;/p&gt;
+
+        {# Optional: Show portal messages (e.g., errors) #}
+        {% assign msg = request.params['message'] %}
+        {% if msg %}
+          &lt;div class="alert alert-error"&gt;{{ msg }}&lt;/div&gt;
+        {% endif %}
+
+        &lt;!-- Local sign-in posts to the built-in /signin endpoint --&gt;
+        &lt;form method="post" action="/signin" autocomplete="on" novalid"{{ request.url }}"/&gt;
+
+          &lt;div class="field"&gt;
+            &lt;label for="username"&gt;Email or Username&lt;/label&gt;
+            &lt;input id="username" name="username" type="text" required placeholder="you@example.com"&gt;
+          &lt;/div&gt;
+
+          &lt;div class="field"&gt;
+            &lt;label for="password"&gt;Password&lt;/label&gt;
+            &lt;input id="password" name="password" type="password" required placeholder="••••••••"&gt;
+          &lt;/div&gt;
+
+          &lt;div class="actions"&gt;
+            /forgotpassword/Forgot password?&lt;/a&gt;
+            &lt;button type="submit" class="btn"&gt;Sign in&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/form&gt;
+
+        &lt;div class="divider"&gt;&lt;span&gt;Or continue with&lt;/span&gt;&lt;/div&gt;
+
+        &lt;!-- External identity providers --&gt;
+        &lt;div class="providers"&gt;
+          &lt;!-- Remove any providers you don't use --&gt;
+          &lt;a class="btn btnAzureAD&amp;returnUrl={{ request.url }}
+            &lt;!-- Simple icon dots --&gt;
+            &lt;span style="width:8px;height:8px;border-radius:50%;background:#2563eb;display:inline-block"&gt;&lt;/span&gt;
+            &lt;span&gt;Azure AD&lt;/span&gt;
+          &lt;/a&gt;
+
+          &lt;a class="btn btn-secondary" href="/signin?provider=MicrosoftAccount&amp;returnUrl={{ request.url8px;height:8px;border-radius:50%;background:#0078d4;display:inline-block}}"&gt;&lt;/span&gt;
+            &lt;span&gt;Microsoft&lt;/span&gt;
+          &lt;/a&gt;
+
+          /signin?provider=Google&amp;returnUrl={{ request.url }}
+            &lt;span style="width:8px;height:8px;border-radius:50%;background:#ea4335;display:inline-block"&gt;&lt;/span&gt;
+            &lt;span&gt;Google&lt;/span&gt;
+          &lt;/a&gt;
+
+          /signin?provider=LinkedIn&amp;returnUrl={{ request.url }}
+            &lt;span style="width:8px;height:8px;border-radius:50%;background:#0a66c2;display:inline-block"&gt;&lt;/span&gt;
+            &lt;span&gt;LinkedIn&lt;/span&gt;
+          &lt;/a&gt;
+
+          /signin?provider=Facebook&amp;returnUrl={{ request.url }}
+            &lt;span style="width:8px;height:8px;border-radius:50%;background:#1877f2;display:inline-block"&gt;&lt;/span&gt;
+            &lt;span&gt;Facebook&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;div class="foot"&gt;
+          &lt;p&gt;New here? /register/Create an account&lt;/a&gt;&lt;/p&gt;
+          &lt;p&gt;By signing in, you agree to our &lt;aerms/Terms of Use&lt;/a&gt; and &lt;a href="/privacyPolicy&lt;/a&gt;.&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+
+      &lt;!-- Right: Visual / marketing panel --&gt;
+      &lt;aside class="visual"&gt;
+        &lt;!-- You can replace this with an image: &lt;img src="/-/media/your --&gt;
+        &lt;h3 class="headline"&gt;
+          Secure access to your Power Pages site.&lt;br&gt;
+          Role-based permissions. Seamless external identity. Auditable sign-ins.
+          &lt;div class="tag"&gt;Powered by Microsoft Dataverse &amp; Power Pages&lt;/div&gt;
+        &lt;/h3&gt;
+      &lt;/aside&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Optional: light client-side validation --&gt;
+  &lt;script&gt;
+    (function(){
+      const form = document.querySelector('form[action="/signin"]');
+      if(!form) return;
+      form.addEventListener('submit', function(e){
+        const u = form.querySelector('[name="username"]');
+        const p = form.querySelector('[name="password"]');
+        if(!u.value.trim() || !p.value.trim()){
+          e.preventDefault();
+          alert('Please enter your username and password.');
+        }
+      });
+    })();
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+Content Snipped Test-deleted</searchcontent>
+  <statecode>1</statecode>
+  <statuscode>2</statuscode>
+</powerpagecomponent>

@@ -1,0 +1,11 @@
+<powerpagecomponent powerpagecomponentid="91fc47e3-3028-f111-8341-000d3a36c81b">
+  <content>{"flowapiurl":"/_api/cloudflow/v1.0/trigger/b5966fbe-3028-f111-8341-000d3a36c81b","flowtriggerurl":"","metadata":"","adx_CloudFlowConsumer_adx_webrole":["5dd28c7a-ecf2-4752-a374-2db324e4279f"],"processid":"b5966fbe-3028-f111-8341-000d3a36c81b"}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Power Pages - Flow Check</name>
+  <powerpagecomponenttype>33</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>193c85f4-6bd0-4d90-b34d-b93da1ca5eef</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

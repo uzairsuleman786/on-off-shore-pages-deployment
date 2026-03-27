@@ -1,0 +1,21 @@
+<powerpagecomponent powerpagecomponentid="7c5ad865-5ad8-664d-fa07-1aeeb7fbce3d">
+  <content>{
+  "displayorder": 2,
+  "weblinksetid": "fb5102ab-fb35-4634-a3f0-01c3b8f7b704",
+  "pageid": "9ab11308-955a-d2ff-d513-f63f75567d7e",
+  "publishingstateid": "706c8d44-f8a7-4d37-803a-01690654b0df",
+  "displaypagevalidation": false,
+  "displayimageonly": false,
+  "displaypagechildlinks": false,
+  "openinnewwindow": false,
+  "robotsfollowlink": true
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Events</name>
+  <powerpagecomponenttype>5</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>193c85f4-6bd0-4d90-b34d-b93da1ca5eef</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

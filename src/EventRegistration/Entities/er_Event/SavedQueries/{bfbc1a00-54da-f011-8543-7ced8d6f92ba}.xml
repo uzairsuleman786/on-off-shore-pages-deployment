@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{bfbc1a00-54da-f011-8543-7ced8d6f92ba}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="er_eventname" select="1" icon="1" preview="1">
+        <row name="result" id="er_eventid">
+          <cell name="er_eventname" width="200" />
+          <cell name="er_eventdate" width="200" />
+          <cell name="er_description" width="200" />
+          <cell name="er_seatsavalable" width="200" />
+          <cell name="er_location" width="200" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+        <entity name="er_event">&lt;attribute name="er_eventname" /&gt;&lt;attribute name="er_eventdate" /&gt;&lt;attribute name="er_description" /&gt;&lt;attribute name="er_seatsavalable" /&gt;&lt;attribute name="er_location" /&gt;<attribute name="er_eventname" /><attribute name="er_eventdate" /><attribute name="er_description" /><attribute name="er_seatsavalable" /><attribute name="er_location" /><attribute name="er_eventid" /></entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Pages Event" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

@@ -1,0 +1,18 @@
+<powerpagecomponent powerpagecomponentid="f348aaf0-1ce6-f011-8543-7ced8d6f92ba">
+  <content>{
+  "value": "&lt;!-- Signup Intro Snippet: Account/Register/PageCopy --&gt;\r\n&lt;div class=\"auth-card auth-register\"&gt;\r\n  &lt;!-- Header --&gt;\r\n  &lt;div class=\"auth-header text-center\"&gt;\r\n    &lt;h2 class=\"auth-title\"&gt;Create your account&lt;/h2&gt;\r\n    &lt;p class=\"auth-subtitle\"&gt;\r\n      It only takes a minute. Fill the details below and click &lt;strong&gt;Register&lt;/strong&gt;.\r\n    &lt;/p&gt;\r\n  &lt;/div&gt;\r\n\r\n  &lt;!-- Benefits / quick bullets --&gt;\r\n  &lt;div class=\"auth-benefits\"&gt;\r\n    &lt;ul class=\"list-unstyled\"&gt;\r\n      &lt;li&gt;✔ Access member-only features&lt;/li&gt;\r\n      &lt;li&gt;✔ Track your requests and status&lt;/li&gt;\r\n      &lt;li&gt;✔ Receive notifications and updates&lt;/li&gt;\r\n    &lt;/ul&gt;\r\n  &lt;/div&gt;\r\n\r\n  &lt;!-- Optional info alert --&gt;\r\n  &lt;div class=\"alert alert-info\" role=\"alert\"&gt;\r\n    &lt;strong&gt;Tip:&lt;/strong&gt; Use a valid email address—you’ll need it to verify your account.\r\n  &lt;/div&gt;\r\n\r\n  &lt;!-- Optional policy text --&gt;\r\n  &lt;div class=\"auth-policy small\"&gt;\r\n    By creating an account, you agree to our\r\n    /termsTerms of Use&lt;/a&gt; and\r\n    /privacyPrivacy Policy&lt;/a&gt;.\r\n  &lt;/div&gt;\r\n\r\n  &lt;!-- Optional links (if you want to help navigation) --&gt;\r\n  &lt;div class=\"auth-switch text-center\"&gt;\r\n    &lt;p class=\"small\"&gt;\r\n      Already have an account?\r\n      &lt;a href=\"/n in&lt;/a&gt;\r\n    &lt;/p&gt;\r\n  &lt;/div&gt;\r\n&lt;/div&gt;",
+  "type": 756150001,
+  "display_name": "Login"
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Login</name>
+  <powerpagecomponenttype>7</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>193c85f4-6bd0-4d90-b34d-b93da1ca5eef</powerpagesiteid>
+  </powerpagesiteid>
+  <powerpagesitelanguageid>
+    <powerpagesitelanguageid>e44d1b13-a1ce-4442-90d4-a38a3d8d370c</powerpagesitelanguageid>
+  </powerpagesitelanguageid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

@@ -1,0 +1,31 @@
+<powerpagecomponent powerpagecomponentid="283517cb-400a-4d8d-af8d-fe7aedaed5c2">
+  <content>{
+  "entityname": "Event CRUD",
+  "entitylogicalname": "er_event",
+  "scope": 756150000,
+  "append": true,
+  "appendto": true,
+  "delete": false,
+  "read": true,
+  "create": true,
+  "write": true,
+  "parentrelationship": null,
+  "parententitypermission": null,
+  "contactrelationship": null,
+  "accountrelationship": null,
+  "childTablePermissions": [],
+  "adx_entitypermission_webrole": [
+    "5dd28c7a-ecf2-4752-a374-2db324e4279f",
+    "6db4d624-4371-4f7e-90d8-f3100f445e77"
+  ],
+  "permissionfetchxml": null
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Event CRUD</name>
+  <powerpagecomponenttype>18</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>193c85f4-6bd0-4d90-b34d-b93da1ca5eef</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

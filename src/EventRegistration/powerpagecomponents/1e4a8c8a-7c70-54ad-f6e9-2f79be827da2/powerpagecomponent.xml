@@ -1,0 +1,21 @@
+<powerpagecomponent powerpagecomponentid="1e4a8c8a-7c70-54ad-f6e9-2f79be827da2">
+  <content>{
+  "displayorder": 9,
+  "weblinksetid": "fb5102ab-fb35-4634-a3f0-01c3b8f7b704",
+  "pageid": "e1864372-8ea6-2c1b-5749-78a73cb05806",
+  "publishingstateid": "706c8d44-f8a7-4d37-803a-01690654b0df",
+  "displaypagevalidation": false,
+  "displayimageonly": false,
+  "displaypagechildlinks": false,
+  "openinnewwindow": false,
+  "robotsfollowlink": true
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Signup Page</name>
+  <powerpagecomponenttype>5</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>193c85f4-6bd0-4d90-b34d-b93da1ca5eef</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

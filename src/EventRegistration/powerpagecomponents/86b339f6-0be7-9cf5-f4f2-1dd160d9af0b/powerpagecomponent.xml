@@ -1,0 +1,102 @@
+<powerpagecomponent powerpagecomponentid="86b339f6-0be7-9cf5-f4f2-1dd160d9af0b">
+  <content>{"displayorder":5,"pagetemplateid":"fc18a914-844b-4d5a-8ab2-020e60610c58","parentpageid":"cb403430-2fb9-4936-a45c-db75f161d8ba","partialurl":"view-registration-detail","isroot":false,"rootwebpageid":"4ab25953-db12-2477-c962-3ea1cf075a55","title":"View Registration Detail","summary":"&lt;p&gt;This is a sample landing page designed to be a starting point for your website&lt;/p&gt;","copy":"{% assign id_param = request.params[\"id\"] %}  \n\n{% fetchxml events %}\n&lt;fetch version=\"1.0\" output-format=\"xml-platform\" mapping=\"logical\" distinct=\"false\"&gt;\n  &lt;entity name=\"er_event\"&gt;\n    &lt;attribute name=\"er_eventid\" /&gt;\n    &lt;attribute name=\"er_eventname\" /&gt;\n    &lt;attribute name=\"createdon\" /&gt;\n    &lt;attribute name=\"statuscode\" /&gt;\n    &lt;attribute name=\"statecode\" /&gt;\n    &lt;attribute name=\"er_seatsavalable\" /&gt;\n    &lt;attribute name=\"overriddencreatedon\" /&gt;\n    &lt;attribute name=\"owningbusinessunit\" /&gt;\n    &lt;attribute name=\"ownerid\" /&gt;\n    &lt;attribute name=\"modifiedon\" /&gt;\n    &lt;attribute name=\"modifiedonbehalfby\" /&gt;\n    &lt;attribute name=\"modifiedby\" /&gt;\n    &lt;attribute name=\"er_location\" /&gt;\n    &lt;attribute name=\"er_eventdate\" /&gt;\n    &lt;attribute name=\"er_description\" /&gt;\n    &lt;attribute name=\"createdonbehalfby\" /&gt;\n    &lt;attribute name=\"createdby\" /&gt;\n    &lt;order attribute=\"er_eventname\" descending=\"false\" /&gt;\n  &lt;/entity&gt;\n&lt;/fetch&gt;\n\n{% endfetchxml %}\n\n{% fetchxml userRegistrationDetails %}\n\n&lt;fetch version=\"1.0\" output-format=\"xml-platform\" mapping=\"logical\" distinct=\"false\"&gt;\n&lt;entity name=\"er_registration\"&gt;\n&lt;attribute name=\"er_registrationid\"/&gt;\n&lt;attribute name=\"er_registrantname\"/&gt;\n&lt;attribute name=\"createdon\"/&gt;\n&lt;attribute name=\"statuscode\"/&gt;\n&lt;attribute name=\"statecode\"/&gt;\n&lt;attribute name=\"er_registrationstatus\"/&gt;\n&lt;attribute name=\"er_registrationdate\"/&gt;\n&lt;attribute name=\"overriddencreatedon\"/&gt;\n&lt;attribute name=\"owningbusinessunit\"/&gt;\n&lt;attribute name=\"ownerid\"/&gt;\n&lt;attribute name=\"modifiedon\"/&gt;\n&lt;attribute name=\"modifiedonbehalfby\"/&gt;\n&lt;attribute name=\"modifiedby\"/&gt;\n&lt;attribute name=\"er_event\"/&gt;\n&lt;attribute name=\"er_email\"/&gt;\n&lt;attribute name=\"createdonbehalfby\"/&gt;\n&lt;attribute name=\"createdby\"/&gt;\n&lt;attribute name=\"er_registeredby\"/&gt;\n \n&lt;order attribute=\"er_registrantname\" descending=\"false\"/&gt;\n\n   &lt;filter type =\"and\"&gt;\n      &lt;condition attribute=\"er_registrationid\" operator=\"eq\" value=\"{{id_param}}\" /&gt;\n    &lt;/filter&gt;\n\n&lt;/entity&gt;\n&lt;/fetch&gt;\n\n{% endfetchxml %}\n\n\n&lt;div class=\"container\"\nstyle=\"display: flex; flex-wrap: wrap; background-color: Irgba(255, 255, 255, 0.8); border-radius: 10px; box-shadow: 4px 8px [ &lt;div class=\"col-lg-12 columnBlockLayout\"\nstyle=\"flex-grow: 1; display: flex; flex-direction: column; min-width: 250px;\"&gt;\n&lt;form id=\"courseForm\"&gt;\n  &lt;div class=\"row\"&gt;\n\n    &lt;h2 class=\"h2 mb-0\"&gt;Event Registration Detail&lt;/h2&gt;\n  &lt;/div&gt;\n{% if userRegistrationDetails.results.entities.size&gt; 0 %}\n{% assign userRegistration = userRegistrationDetails.results.entities[0] %}\n&lt;div class=\"form-group mb-3\"&gt;&lt;label for=\"name\" class=\"form-label\"&gt;Registrant Name: &lt;/label&gt;\n&lt;input type=\"text\" id=\"name\" name=\"name\" required=\"\" class=\"form-control\" value=\"{{userRegistration.er_registrantname}}\" disabled/&gt;&lt;/div&gt; \n&lt;div class=\"form-group mb-3\"&gt;&lt;label for=\"email\" class=\"form-label\"&gt;Email: &lt;/label&gt; &lt;input type=\"text\"\nid=\"email\" name=\"email\" required=\"\" class=\"form-control\" value=\"{{userRegistration.er_email}}\" disabled/&gt;&lt;/div&gt; \n&lt;div class=\"form-group mb-3\"&gt; &lt;label for=\"registrationstatus\" class=\"form-label\"&gt;Registration Status: &lt;/label&gt;\n&lt;input type=\"text\" id=\"registrationStatus\" name=\"registrationStatus\" required=\"\" class=\"form-control\" value=\"{{userRegistration.er_registrationstatus.label}}\"disabled/&gt;&lt;/div&gt; \n &lt;div class=\"form-group mb-3\"&gt;{{userRegistration.er_event.value}}\n&lt;label for=\"eventRegister\" class=\"form-label\"&gt;Event Name: &lt;/label&gt;\n&lt;input type=\"text\"\nid=\"eventRegister\" name=\"eventRegister\" required=\"\" class=\"form-control\" value=\"{{userRegistration.er_event.name}}\" disabled/&gt;\n&lt;/div&gt;\n{% endif %}\n&lt;/form&gt;\n&lt;/div&gt;\n&lt;/div&gt;","publishingstateid":"706c8d44-f8a7-4d37-803a-01690654b0df","enablerating":false,"enabletracking":false,"excludefromsearch":false,"hiddenfromsitemap":true,"sharedpageconfiguration":false,"feedbackpolicy":756150000}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>View Registration Detail</name>
+  <powerpagecomponenttype>2</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>193c85f4-6bd0-4d90-b34d-b93da1ca5eef</powerpagesiteid>
+  </powerpagesiteid>
+  <powerpagesitelanguageid>
+    <powerpagesitelanguageid>e44d1b13-a1ce-4442-90d4-a38a3d8d370c</powerpagesitelanguageid>
+  </powerpagesitelanguageid>
+  <searchcontent>View Registration Detail{% assign id_param = request.params["id"] %}  
+
+{% fetchxml events %}
+&lt;fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false"&gt;
+  &lt;entity name="er_event"&gt;
+    &lt;attribute name="er_eventid" /&gt;
+    &lt;attribute name="er_eventname" /&gt;
+    &lt;attribute name="createdon" /&gt;
+    &lt;attribute name="statuscode" /&gt;
+    &lt;attribute name="statecode" /&gt;
+    &lt;attribute name="er_seatsavalable" /&gt;
+    &lt;attribute name="overriddencreatedon" /&gt;
+    &lt;attribute name="owningbusinessunit" /&gt;
+    &lt;attribute name="ownerid" /&gt;
+    &lt;attribute name="modifiedon" /&gt;
+    &lt;attribute name="modifiedonbehalfby" /&gt;
+    &lt;attribute name="modifiedby" /&gt;
+    &lt;attribute name="er_location" /&gt;
+    &lt;attribute name="er_eventdate" /&gt;
+    &lt;attribute name="er_description" /&gt;
+    &lt;attribute name="createdonbehalfby" /&gt;
+    &lt;attribute name="createdby" /&gt;
+    &lt;order attribute="er_eventname" descending="false" /&gt;
+  &lt;/entity&gt;
+&lt;/fetch&gt;
+
+{% endfetchxml %}
+
+{% fetchxml userRegistrationDetails %}
+
+&lt;fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false"&gt;
+&lt;entity name="er_registration"&gt;
+&lt;attribute name="er_registrationid"/&gt;
+&lt;attribute name="er_registrantname"/&gt;
+&lt;attribute name="createdon"/&gt;
+&lt;attribute name="statuscode"/&gt;
+&lt;attribute name="statecode"/&gt;
+&lt;attribute name="er_registrationstatus"/&gt;
+&lt;attribute name="er_registrationdate"/&gt;
+&lt;attribute name="overriddencreatedon"/&gt;
+&lt;attribute name="owningbusinessunit"/&gt;
+&lt;attribute name="ownerid"/&gt;
+&lt;attribute name="modifiedon"/&gt;
+&lt;attribute name="modifiedonbehalfby"/&gt;
+&lt;attribute name="modifiedby"/&gt;
+&lt;attribute name="er_event"/&gt;
+&lt;attribute name="er_email"/&gt;
+&lt;attribute name="createdonbehalfby"/&gt;
+&lt;attribute name="createdby"/&gt;
+&lt;attribute name="er_registeredby"/&gt;
+ 
+&lt;order attribute="er_registrantname" descending="false"/&gt;
+
+   &lt;filter type ="and"&gt;
+      &lt;condition attribute="er_registrationid" operator="eq" value="{{id_param}}" /&gt;
+    &lt;/filter&gt;
+
+&lt;/entity&gt;
+&lt;/fetch&gt;
+
+{% endfetchxml %}
+
+
+&lt;div class="container"
+style="display: flex; flex-wrap: wrap; background-color: Irgba(255, 255, 255, 0.8); border-radius: 10px; box-shadow: 4px 8px [ &lt;div class="col-lg-12 columnBlockLayout"
+style="flex-grow: 1; display: flex; flex-direction: column; min-width: 250px;"&gt;
+&lt;form id="courseForm"&gt;
+  &lt;div class="row"&gt;
+
+    &lt;h2 class="h2 mb-0"&gt;Event Registration Detail&lt;/h2&gt;
+  &lt;/div&gt;
+{% if userRegistrationDetails.results.entities.size&gt; 0 %}
+{% assign userRegistration = userRegistrationDetails.results.entities[0] %}
+&lt;div class="form-group mb-3"&gt;&lt;label for="name" class="form-label"&gt;Registrant Name: &lt;/label&gt;
+&lt;input type="text" id="name" name="name" required="" class="form-control" value="{{userRegistration.er_registrantname}}" disabled/&gt;&lt;/div&gt; 
+&lt;div class="form-group mb-3"&gt;&lt;label for="email" class="form-label"&gt;Email: &lt;/label&gt; &lt;input type="text"
+id="email" name="email" required="" class="form-control" value="{{userRegistration.er_email}}" disabled/&gt;&lt;/div&gt; 
+&lt;div class="form-group mb-3"&gt; &lt;label for="registrationstatus" class="form-label"&gt;Registration Status: &lt;/label&gt;
+&lt;input type="text" id="registrationStatus" name="registrationStatus" required="" class="form-control" value="{{userRegistration.er_registrationstatus.label}}"disabled/&gt;&lt;/div&gt; 
+ &lt;div class="form-group mb-3"&gt;{{userRegistration.er_event.value}}
+&lt;label for="eventRegister" class="form-label"&gt;Event Name: &lt;/label&gt;
+&lt;input type="text"
+id="eventRegister" name="eventRegister" required="" class="form-control" value="{{userRegistration.er_event.name}}" disabled/&gt;
+&lt;/div&gt;
+{% endif %}
+&lt;/form&gt;
+&lt;/div&gt;
+&lt;/div&gt;View Registration Detail</searchcontent>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

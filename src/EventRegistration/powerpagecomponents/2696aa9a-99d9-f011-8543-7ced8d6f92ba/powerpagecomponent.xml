@@ -1,0 +1,11 @@
+<powerpagecomponent powerpagecomponentid="2696aa9a-99d9-f011-8543-7ced8d6f92ba">
+  <content>{"name":"Bot Consumer","configjson":"{\"skillConfigViewName\":\"Event Registration  - eventregistration2026 bot Answers\"}","botschemaname":"cre4a_0bb6af01-7201-405d-a795-63476491af55","webRoles":[],"webForms":[],"forms":[]}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Bot Consumer</name>
+  <powerpagecomponenttype>27</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>193c85f4-6bd0-4d90-b34d-b93da1ca5eef</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

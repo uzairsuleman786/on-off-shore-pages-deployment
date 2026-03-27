@@ -1,0 +1,11 @@
+<powerpagesites>
+  <powerpagesite powerpagesiteid="193c85f4-6bd0-4d90-b34d-b93da1ca5eef">
+    <content>{"defaultlanguage":"e44d1b13-a1ce-4442-90d4-a38a3d8d370c","footerwebtemplateid":"2a4eb780-6402-490b-980d-10fd56106f61","headerwebtemplateid":"9b8adb7b-4308-4517-ac99-077d980517c9","website_language":1033,"defaultbotconsumerid":"2696aa9a-99d9-f011-8543-7ced8d6f92ba"}</content>
+    <datamodelversion>2.0</datamodelversion>
+    <iscustomizable>1</iscustomizable>
+    <name>Event Registration  - eventregistration2025</name>
+    <primarydomainname>eventregistration2025.powerappsportals.com</primarydomainname>
+    <statecode>0</statecode>
+    <statuscode>1</statuscode>
+  </powerpagesite>
+</powerpagesites>

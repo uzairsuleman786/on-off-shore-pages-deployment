@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{6e1329e1-f8f5-463a-9382-bc17afb495b0}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="er_customerrequest1" select="1" icon="1" preview="1">
+        <row name="result" id="er_customerrequestid">
+          <cell name="er_customerrequest1" width="300" />
+          <cell name="er_customer" width="150" />
+          <cell name="er_requesttype" width="150" />
+          <cell name="er_description" width="150" />
+          <cell name="er_status" width="150" />
+          <cell name="er_submissiondate" width="150" />
+          <cell name="er_cid" width="150" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="er_customerrequest">
+          <attribute name="er_customerrequestid" />
+          <attribute name="er_customerrequest1" />
+          <attribute name="createdon" />
+          <order attribute="er_customerrequest1" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="er_customer" />
+          <attribute name="er_requesttype" />
+          <attribute name="er_description" />
+          <attribute name="er_status" />
+          <attribute name="er_submissiondate" />
+          <attribute name="er_cid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active Customer Requests" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

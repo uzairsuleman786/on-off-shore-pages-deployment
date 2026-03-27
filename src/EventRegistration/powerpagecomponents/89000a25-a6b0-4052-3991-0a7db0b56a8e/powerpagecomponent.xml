@@ -1,0 +1,116 @@
+<powerpagecomponent powerpagecomponentid="89000a25-a6b0-4052-3991-0a7db0b56a8e">
+  <content>{"filecontent":null,"displayorder":3,"customjavascript":"// document.getElementById('eventRegistrationForm').addEventListener('submit', function (event) {\r\n//     event.preventDefault(); // stop normal form submit\r\n//     debugger;\r\n\r\n//     const name = document.getElementById('registrantName').value.trim();\r\n//     const email = document.getElementById('email').value.trim();\r\n//     const eventId = document.getElementById('event').value;\r\n//     const status = parseInt(document.getElementById('status').value,10);\r\n\r\n\r\n//     webapi.safeAjax({\r\n//         type: \"POST\",\r\n//         url: \"/_api/er_registrations\",\r\n//         contentType: \"application/json\",\r\n//         data: JSON.stringify({\r\n//             er_registrantname: name,\r\n//             er_Email: email,\r\n//             er_registrationstatus: status,\r\n//             \"er_Event@odata.bind\": \"/er_events(\" + eventId + \")\"\r\n\r\n//             //\"@er_Event@odata.bind\": \"/er_events(\" + eventId + \")\" // make sure entity set is plural\r\n//         }),\r\n//         success: function (res, status, xhr) {\r\n//             alert(\"Registration successful!\");\r\n//             document.getElementById(\"eventRegistrationForm\").reset();\r\n//             console.log(\"Entity ID: \" + xhr.getResponseHeader(\"entityID\"));\r\n//         },\r\n//         error: function (xhr) {\r\n//             console.error(\"Error creating registration:\", xhr.status, xhr.responseText);\r\n//         }\r\n//     });\r\n// });\r\n\r\n\r\ndocument.getElementById('eventRegistrationForm').addEventListener('submit', function (event) {\r\n  event.preventDefault();\r\n\r\n  const name = document.getElementById('registrantName').value.trim();\r\n  const email = document.getElementById('email').value.trim();\r\n  const eventId = document.getElementById('event').value.trim(); // must be GUID\r\n  const status = parseInt(document.getElementById('status').value, 10);\r\n  const userid = \"{{user.id}}\";\r\n\r\n  // Basic client-side validation\r\n  const guidRegex = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/;\r\n  if (!guidRegex.test(eventId)) {\r\n    alert('Invalid Event ID. Please ensure the event value is a GUID.');\r\n    return;\r\n  }\r\n\r\n  // IMPORTANT: Use exact Dataverse logical names\r\n  const payload = {\r\n    er_registrantname: name,         // confirm logical name\r\n    er_email: email,                 // confirm logical name (likely all lowercase)\r\n    er_registrationstatus: status,   // confirm this is the optionset logical name &amp; value\r\n    \"er_RegisteredBy@odata.bind\": \"/contacts(\" + userid +\")\", // entity set name (plural) + GUID\r\n    \"er_Event@odata.bind\": `/er_events(${eventId})` // entity set name (plural) + GUID\r\n\r\n  };\r\n\r\n  webapi.safeAjax({\r\n    type: \"POST\",\r\n    url: \"/_api/er_registrations\", // entity set name (plural) for registrations\r\n    contentType: \"application/json; charset=utf-8\",\r\n    data: JSON.stringify(payload),\r\n    success: function (res, status, xhr) {\r\n      alert(\"Registration successful!\");\r\n      document.getElementById(\"eventRegistrationForm\").reset();\r\n      console.log(\"Entity ID:\", xhr.getResponseHeader(\"entityID\"), res);\r\n    },\r\n    error: function (xhr) {\r\n      // Try to surface more diagnostic detail\r\n      let detail = xhr.responseText;\r\n      try {\r\n        const j = JSON.parse(xhr.responseText);\r\n        detail = JSON.stringify(j, null, 2);\r\n      } catch {}\r\n      console.error(\"Error creating registration:\", xhr.status, detail);\r\n      alert(`Create failed: ${xhr.status}\\n${detail}`);\r\n    }\r\n  });\r\n});\r\n\r\n\r\n\r\n/*(document).ready(function () {\r\n\r\n  let today = new Date().toISOString().split('T')[0];\r\n  $(\"#registrationDate\").val(today);\r\n\r\n  webapi.safeAjax({\r\n    type: \"GET\",\r\n    url: \"/_api/new_events?$select=new_eventid,new_eventname\",\r\n    success: function (data) {\r\n      data.value.forEach(function (event) {\r\n        $(\"#event\").append(\r\n          `&lt;option value=\"${event.new_eventid}\"&gt;\r\n            ${event.new_eventname}\r\n          &lt;/option&gt;`\r\n        );\r\n      });\r\n    }\r\n  });\r\n\r\n  $(\"#eventRegistrationForm\").submit(function (e) {\r\n    e.preventDefault();\r\n\r\n    let payload = {\r\n      \"new_attendeename\": $(\"#attendeeName\").val(),\r\n      \"new_registrationdate\": $(\"#registrationDate\").val(),\r\n      \"new_status\": parseInt($(\"#status\").val()),\r\n      \"new_Event@odata.bind\": \"/new_events(\" + $(\"#event\").val() + \")\"\r\n    };\r\n\r\n    webapi.safeAjax({\r\n      type: \"POST\",\r\n      url: \"/_api/new_eventregistrations\",\r\n      contentType: \"application/json\",\r\n      data: JSON.stringify(payload),\r\n      success: function () {\r\n        alert(\"Registration successful!\");\r\n        $(\"#eventRegistrationForm\")[0].reset();\r\n      }\r\n    });\r\n  });\r\n\r\n});\r\n\r\n\r\n\r\n\r\ndocument.getElementById('event Registration Form').addEventListener('submit', function (event) { event.preventDefault(); // stop normal form submit\r\n// Grab field values\r\nconst name = document.getElementById('registrant Name').value.trim();\r\nconst email = document.getElementById('email').value.trim();\r\nconst eventId = document.getElementById('event').value;\r\nconst regDate = document.getElementById('registrationDate').value; \r\nconst status = document.getElementById('status').value;\r\n// Basic validation\r\nif (!name || !email || !eventId) {\r\nalert(\"Please fill in all required fields.\");\r\nreturn;\r\n}\r\n// For now, just show confirmation\r\nalert(\r\n'Registration Submitted! \\n\\nName: ${name}\\nEmail: ${email}\\nEvent ID: ${eventId}\\nDate: ${regDate} \\nStatus: ${status}'\r\n);\r\n// TODO: Call Dataverse Web API or use Power Pages Basic Form\r\n});\r\n\r\n*/","pagetemplateid":"fc18a914-844b-4d5a-8ab2-020e60610c58","parentpageid":"cb403430-2fb9-4936-a45c-db75f161d8ba","partialurl":"Registration","isroot":false,"rootwebpageid":"aeff07c2-cb90-d569-7c3f-129711194d5b","title":"Registration","summary":"&lt;p&gt;This is a sample landing page designed to be a starting point for your website&lt;/p&gt;","copy":"{% fetchxml events %}\n&lt;fetch version=\"1.0\" output-format=\"xml-platform\" mapping=\"logical\" distinct=\"false\"&gt;\n  &lt;entity name=\"er_event\"&gt;\n    &lt;attribute name=\"er_eventid\" /&gt;\n    &lt;attribute name=\"er_eventname\" /&gt;\n    &lt;attribute name=\"createdon\" /&gt;\n    &lt;attribute name=\"statuscode\" /&gt;\n    &lt;attribute name=\"statecode\" /&gt;\n    &lt;attribute name=\"er_seatsavalable\" /&gt;\n    &lt;attribute name=\"overriddencreatedon\" /&gt;\n    &lt;attribute name=\"owningbusinessunit\" /&gt;\n    &lt;attribute name=\"ownerid\" /&gt;\n    &lt;attribute name=\"modifiedon\" /&gt;\n    &lt;attribute name=\"modifiedonbehalfby\" /&gt;\n    &lt;attribute name=\"modifiedby\" /&gt;\n    &lt;attribute name=\"er_location\" /&gt;\n    &lt;attribute name=\"er_eventdate\" /&gt;\n    &lt;attribute name=\"er_description\" /&gt;\n    &lt;attribute name=\"createdonbehalfby\" /&gt;\n    &lt;attribute name=\"createdby\" /&gt;\n    &lt;order attribute=\"er_eventname\" descending=\"false\" /&gt;\n  &lt;/entity&gt;\n&lt;/fetch&gt;\n\n{% endfetchxml %}\n\n&lt;section class=\"py-5\"&gt;\n  &lt;div class=\"container\"&gt;\n    &lt;div class=\"row\"&gt;\n      &lt;div class=\"col-12 col-md-8 col-lg-6\"&gt;\n        &lt;div class=\"card shadow-sm border-0 rounded-3\"&gt;\n          &lt;div class=\"card-body\"&gt;\n            &lt;h4 class=\"text-center mb-4\"&gt;Event Registration&lt;/h4&gt;\n\n            &lt;form id=\"eventRegistrationForm\"&gt;\n              &lt;!-- Registrant Name --&gt;\n              &lt;div class=\"mb-3\"&gt;\n                &lt;label class=\"form-label\"&gt;Registrant Name&lt;/label&gt;\n                &lt;input type=\"text\" id=\"registrantName\" class=\"form-control\" required /&gt;\n              &lt;/div&gt;\n\n              &lt;!-- Email --&gt;\n              &lt;div class=\"mb-3\"&gt;\n                &lt;label class=\"form-label\"&gt;Email Address&lt;/label&gt;\n                &lt;input type=\"email\" id=\"email\" class=\"form-control\" required /&gt;\n              &lt;/div&gt;\n\n              &lt;!-- Event (Lookups) --&gt;\n              &lt;div class=\"mb-3\"&gt;\n                &lt;label class=\"form-label\"&gt;Select Event&lt;/label&gt;\n                &lt;select id=\"event\" class=\"form-select\" required&gt;\n                  &lt;option value=\"\" disabled selected&gt;-- Choose Event --&lt;/option&gt;\n\n                  {% for result in events.results.entities %}\n                  &lt;option value=\"{{result.er_eventid}}\"&gt;{{result.er_eventname}}&lt;/option&gt;\n                  {% endfor %}\n                &lt;/select&gt;\n              &lt;/div&gt;\n\n              &lt;!-- Registration Date \n              &lt;div class=\"mb-3\"&gt;\n                &lt;label for=\"registrationDate\" class=\"form-label\"&gt;Registration Date&lt;/label&gt;\n                &lt;input type=\"date\" id=\"registrationDate\" name=\"registrationDate\" class=\"form-control\" readonly /&gt;\n              &lt;/div&gt;\n--&gt;\n              &lt;!-- Status Choice --&gt;\n              &lt;div class=\"mb-4\"&gt;\n                &lt;label class=\"form-label\"&gt;Status&lt;/label&gt;\n                &lt;select id=\"status\" class=\"form-select\" required&gt;\n                  &lt;option value=\"0\" selected&gt;Pending&lt;/option&gt;\n                  &lt;option value=\"1\"&gt;Confirmed&lt;/option&gt;\n                  &lt;option value=\"2\"&gt;Cancelled&lt;/option&gt;\n                &lt;/select&gt;\n              &lt;/div&gt;\n\n              &lt;!-- Submit --&gt;\n              &lt;button type=\"submit\" class=\"btn btn-primary px-4\"&gt;Register&lt;/button&gt;\n            &lt;/form&gt;\n          &lt;/div&gt;\n        &lt;/div&gt;\n      &lt;/div&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n&lt;/section&gt;\n\n{% include \"WebAPI Wrapper\" %}\n\n&lt;script&gt;\n  document.getElementById('eventRegistrationForm')\n  ?.addEventListener('submit', function (e) {\n    e.preventDefault();\n  });\n&lt;/script&gt;\n&lt;div class=\"row sectionBlockLayout text-start\" style=\"display: flex; flex-wrap: wrap; margin: 0px; min-height: auto; padding: 8px;\"&gt;\n  &lt;div class=\"container\" style=\"padding: 0px; display: flex; flex-wrap: wrap;\"&gt;&lt;div class=\"col-lg-12 columnBlockLayout\" style=\"flex-grow: 1; display: flex; flex-direction: column; min-width: 250px;\"&gt;&lt;/div&gt;&lt;/div&gt;\n&lt;/div&gt;\n&lt;div class=\"row sectionBlockLayout text-start\" style=\"display: flex; flex-wrap: wrap; margin: 0px; min-height: auto; padding: 8px;\"&gt;\n  &lt;div class=\"container\" style=\"padding: 0px; display: flex; flex-wrap: wrap;\"&gt;&lt;div class=\"col-lg-12 columnBlockLayout\" style=\"flex-grow: 1; display: flex; flex-direction: column; min-width: 250px;\"&gt;&lt;/div&gt;&lt;/div&gt;\n&lt;/div&gt;\n&lt;div class=\"row sectionBlockLayout text-start\" style=\"display: flex; flex-wrap: wrap; margin: 0px; min-height: auto; padding: 8px;\"&gt;\n  &lt;div class=\"container\" style=\"padding: 0px; display: flex; flex-wrap: wrap;\"&gt;&lt;div class=\"col-lg-12 columnBlockLayout\" style=\"flex-grow: 1; display: flex; flex-direction: column; min-width: 250px;\"&gt;&lt;/div&gt;&lt;/div&gt;\n&lt;/div&gt;","publishingstateid":"706c8d44-f8a7-4d37-803a-01690654b0df","enablerating":false,"enabletracking":false,"excludefromsearch":false,"hiddenfromsitemap":true,"sharedpageconfiguration":false,"feedbackpolicy":756150000}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Registration</name>
+  <powerpagecomponenttype>2</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>193c85f4-6bd0-4d90-b34d-b93da1ca5eef</powerpagesiteid>
+  </powerpagesiteid>
+  <powerpagesitelanguageid>
+    <powerpagesitelanguageid>e44d1b13-a1ce-4442-90d4-a38a3d8d370c</powerpagesitelanguageid>
+  </powerpagesitelanguageid>
+  <searchcontent>Registration{% fetchxml events %}
+&lt;fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false"&gt;
+  &lt;entity name="er_event"&gt;
+    &lt;attribute name="er_eventid" /&gt;
+    &lt;attribute name="er_eventname" /&gt;
+    &lt;attribute name="createdon" /&gt;
+    &lt;attribute name="statuscode" /&gt;
+    &lt;attribute name="statecode" /&gt;
+    &lt;attribute name="er_seatsavalable" /&gt;
+    &lt;attribute name="overriddencreatedon" /&gt;
+    &lt;attribute name="owningbusinessunit" /&gt;
+    &lt;attribute name="ownerid" /&gt;
+    &lt;attribute name="modifiedon" /&gt;
+    &lt;attribute name="modifiedonbehalfby" /&gt;
+    &lt;attribute name="modifiedby" /&gt;
+    &lt;attribute name="er_location" /&gt;
+    &lt;attribute name="er_eventdate" /&gt;
+    &lt;attribute name="er_description" /&gt;
+    &lt;attribute name="createdonbehalfby" /&gt;
+    &lt;attribute name="createdby" /&gt;
+    &lt;order attribute="er_eventname" descending="false" /&gt;
+  &lt;/entity&gt;
+&lt;/fetch&gt;
+
+{% endfetchxml %}
+
+&lt;section class="py-5"&gt;
+  &lt;div class="container"&gt;
+    &lt;div class="row"&gt;
+      &lt;div class="col-12 col-md-8 col-lg-6"&gt;
+        &lt;div class="card shadow-sm border-0 rounded-3"&gt;
+          &lt;div class="card-body"&gt;
+            &lt;h4 class="text-center mb-4"&gt;Event Registration&lt;/h4&gt;
+
+            &lt;form id="eventRegistrationForm"&gt;
+              &lt;!-- Registrant Name --&gt;
+              &lt;div class="mb-3"&gt;
+                &lt;label class="form-label"&gt;Registrant Name&lt;/label&gt;
+                &lt;input type="text" id="registrantName" class="form-control" required /&gt;
+              &lt;/div&gt;
+
+              &lt;!-- Email --&gt;
+              &lt;div class="mb-3"&gt;
+                &lt;label class="form-label"&gt;Email Address&lt;/label&gt;
+                &lt;input type="email" id="email" class="form-control" required /&gt;
+              &lt;/div&gt;
+
+              &lt;!-- Event (Lookups) --&gt;
+              &lt;div class="mb-3"&gt;
+                &lt;label class="form-label"&gt;Select Event&lt;/label&gt;
+                &lt;select id="event" class="form-select" required&gt;
+                  &lt;option value="" disabled selected&gt;-- Choose Event --&lt;/option&gt;
+
+                  {% for result in events.results.entities %}
+                  &lt;option value="{{result.er_eventid}}"&gt;{{result.er_eventname}}&lt;/option&gt;
+                  {% endfor %}
+                &lt;/select&gt;
+              &lt;/div&gt;
+
+              &lt;!-- Registration Date 
+              &lt;div class="mb-3"&gt;
+                &lt;label for="registrationDate" class="form-label"&gt;Registration Date&lt;/label&gt;
+                &lt;input type="date" id="registrationDate" name="registrationDate" class="form-control" readonly /&gt;
+              &lt;/div&gt;
+--&gt;
+              &lt;!-- Status Choice --&gt;
+              &lt;div class="mb-4"&gt;
+                &lt;label class="form-label"&gt;Status&lt;/label&gt;
+                &lt;select id="status" class="form-select" required&gt;
+                  &lt;option value="0" selected&gt;Pending&lt;/option&gt;
+                  &lt;option value="1"&gt;Confirmed&lt;/option&gt;
+                  &lt;option value="2"&gt;Cancelled&lt;/option&gt;
+                &lt;/select&gt;
+              &lt;/div&gt;
+
+              &lt;!-- Submit --&gt;
+              &lt;button type="submit" class="btn btn-primary px-4"&gt;Register&lt;/button&gt;
+            &lt;/form&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+{% include "WebAPI Wrapper" %}
+
+&lt;script&gt;
+  document.getElementById('eventRegistrationForm')
+  ?.addEventListener('submit', function (e) {
+    e.preventDefault();
+  });
+&lt;/script&gt;
+&lt;div class="row sectionBlockLayout text-start" style="display: flex; flex-wrap: wrap; margin: 0px; min-height: auto; padding: 8px;"&gt;
+  &lt;div class="container" style="padding: 0px; display: flex; flex-wrap: wrap;"&gt;&lt;div class="col-lg-12 columnBlockLayout" style="flex-grow: 1; display: flex; flex-direction: column; min-width: 250px;"&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row sectionBlockLayout text-start" style="display: flex; flex-wrap: wrap; margin: 0px; min-height: auto; padding: 8px;"&gt;
+  &lt;div class="container" style="padding: 0px; display: flex; flex-wrap: wrap;"&gt;&lt;div class="col-lg-12 columnBlockLayout" style="flex-grow: 1; display: flex; flex-direction: column; min-width: 250px;"&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row sectionBlockLayout text-start" style="display: flex; flex-wrap: wrap; margin: 0px; min-height: auto; padding: 8px;"&gt;
+  &lt;div class="container" style="padding: 0px; display: flex; flex-wrap: wrap;"&gt;&lt;div class="col-lg-12 columnBlockLayout" style="flex-grow: 1; display: flex; flex-direction: column; min-width: 250px;"&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;Registration</searchcontent>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

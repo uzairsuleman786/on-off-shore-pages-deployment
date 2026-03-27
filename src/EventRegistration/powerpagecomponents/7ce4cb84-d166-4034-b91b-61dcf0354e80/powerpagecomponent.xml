@@ -1,0 +1,14 @@
+<powerpagecomponent powerpagecomponentid="7ce4cb84-d166-4034-b91b-61dcf0354e80">
+  <content>{"display_name":"Profile Navigation"}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Profile Navigation</name>
+  <powerpagecomponenttype>4</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>193c85f4-6bd0-4d90-b34d-b93da1ca5eef</powerpagesiteid>
+  </powerpagesiteid>
+  <powerpagesitelanguageid>
+    <powerpagesitelanguageid>e44d1b13-a1ce-4442-90d4-a38a3d8d370c</powerpagesitelanguageid>
+  </powerpagesitelanguageid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

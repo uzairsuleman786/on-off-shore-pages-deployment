@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{84dfef18-1b63-43e6-a3d1-0a8c4726abf1}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="er_customername" select="1" icon="1" preview="1">
+        <row name="result" id="er_customerid">
+          <cell name="er_customername" width="300" />
+          <cell name="er_email" width="150" />
+          <cell name="er_phone" width="150" />
+          <cell name="er_hawaiianname" width="150" />
+          <cell name="er_createdon" width="150" />
+          <cell name="er_status" width="150" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="er_customer">
+          <attribute name="er_customerid" />
+          <attribute name="er_customername" />
+          <attribute name="createdon" />
+          <order attribute="er_customername" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="er_email" />
+          <attribute name="er_phone" />
+          <attribute name="er_hawaiianname" />
+          <attribute name="er_createdon" />
+          <attribute name="er_status" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active Customers" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
